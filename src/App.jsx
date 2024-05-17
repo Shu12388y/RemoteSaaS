@@ -1,24 +1,23 @@
-import Footer from "./component/Footer/Footer"
-import Navbar from "./component/Navbar/Navbar"
-import HeroSection from "./component/HeroSection/HeroSection";
+import { lazy } from "react";
 
+import {Navbar} from "./component/Navbar/Navbar";
+const HeroSection = lazy(()=>import("./component/HeroSection/HeroSection"));
+const About = lazy(() => import("./about/About"));
+const Contact = lazy(() => import("./contact/Contact"));
+import {  Route, Routes } from "react-router-dom";
 
-const images = [
-  'img/carousel-1.jpg',
-  'img/carousel-2.jpg',
-];
+const images = ["img/carousel-1.jpg", "img/carousel-2.jpg"];
 const App = () => {
   return (
-    <div className="flex flex-col justify-center">
-      <Navbar/>
-      <div className="flex flex-col items-center justify-center">
+    <>
+      <Navbar />
+        <Routes>
+          <Route path="/" element={<HeroSection images={images} />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+    </>
+  );
+};
 
-      <HeroSection images={images}/>
-      </div>
-
-      {/* <Footer/> */}
-    </div>
-  )
-}
-
-export default App
+export default App;
