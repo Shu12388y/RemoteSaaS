@@ -45,13 +45,8 @@ const Footer = () => {
       </div>
       <div className="container mx-auto mt-8 px-4">
         <div className="text-center md:text-left">
-          <p className="text-gray-400">&copy; <a className="border-b border-gray-400 hover:border-gray-200" href="#">Your Site Name</a>, All Rights Reserved. Designed By <a className="border-b border-gray-400 hover:border-gray-200" href="https://htmlcodex.com">HTML Codex</a></p>
-          <div className="mt-4">
-            <a href="#" className="text-gray-400 hover:text-gray-200">Home</a>
-            <a href="#" className="text-gray-400 hover:text-gray-200">Cookies</a>
-            <a href="#" className="text-gray-400 hover:text-gray-200">Help</a>
-            <a href="#" className="text-gray-400 hover:text-gray-200">FAQs</a>
-          </div>
+        
+           
         </div>
       </div>
     </div>

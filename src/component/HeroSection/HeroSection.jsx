@@ -5,6 +5,7 @@ import FullTime from "./components/jobs/FullTime";
 import PartTime from "./components/jobs/PartTime";
 import Testimonials from "./components/testinomial/Testinomial";
 import Footer from "../Footer/Footer";
+import Slider from "./components/slider/Slider";
 const HeroSection = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeTab, setActiveTab] = useState(<Feature data={data} />);
@@ -25,23 +26,20 @@ const HeroSection = ({ images }) => {
 
   return (
     <>
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center overflow-x-hidden">
 
-   
-    <div className="h-full md:h-96">
-      <div className="overflow-hidden rounded-lg">
-        <img
-          className="w-full h-auto"
-          src={images[activeIndex]}
-          alt={`Slide ${activeIndex + 1}`}
-        />
-      </div>
-      <div className="">
+   <div className="w-4/5">
+      <Slider/>
+
+   </div>
+    {/* <div className="h-full md:h-96"> */}
+     
+      <div className="w-4/5">
         <div className="bg-green-400 p-9">
-          <div className="flex justify-center items-center">
+          <div className="flex flex-1 justify-center items-center flex-wrap">
             <input
               type="text"
-              className="form-input border-0 w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 mr-4 mb-4 sm:mb-0"
+              className="form-input border-0 w-full sm:w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4 mr-4 mb-4 sm:mb-0 p-2"
               placeholder="Keyword"
             />
             <select className="form-select border-0 w-full sm:w-1/3 md:w-1/4 lg:w-1/6 xl:w-1/8 mr-4 mb-4 sm:mb-0">
@@ -56,7 +54,7 @@ const HeroSection = ({ images }) => {
               <option value="2">Location 2</option>
               <option value="3">Location 3</option>
             </select>
-            <button className="btn btn-dark border-0">Search</button>
+            <button className="btn btn-dark border-0 mt-[-1.5rem]">Search</button>
           </div>
         </div>
       </div>
@@ -70,82 +68,82 @@ const HeroSection = ({ images }) => {
           >
             Explore By Category
           </h1>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-rows-1 lg:grid-cols-4 md:grid-cols-2 gap-4 items-center justify-center">
             <div
-              className="animate__animated animate__fadeInUp"
+              className="animate__animated animate__fadeInUp flex flex-col items-center lg:block lg:items-center"
               style={{ animationDelay: "0.1s" }}
               >
-              <a className="cat-item rounded p-4 bg-white block" href="">
+              <a className="cat-item rounded py-[4rem] px-[6.5rem] lg:p-4 bg-white block" href="">
                 <i className="fa fa-3x fa-mail-bulk text-primary mb-4"></i>
                 <h6 className="mb-3">Marketing</h6>
                 <p className="mb-0">123 Vacancy</p>
               </a>
             </div>
             <div
-              className="animate__animated animate__fadeInUp"
+              className="animate__animated animate__fadeInUp flex flex-col items-center lg:block lg:items-center"
               style={{ animationDelay: "0.3s" }}
             >
-              <a className="cat-item rounded p-4 bg-white block" href="">
+              <a className="cat-item rounded py-[4rem] px-[5rem] lg:p-4 bg-white block" href="">
                 <i className="fa fa-3x fa-headset text-primary mb-4"></i>
                 <h6 className="mb-3">Customer Service</h6>
                 <p className="mb-0">123 Vacancy</p>
               </a>
             </div>
             <div
-              className="animate__animated animate__fadeInUp"
+              className="animate__animated animate__fadeInUp flex flex-col items-center lg:block lg:items-center"
               style={{ animationDelay: "0.5s" }}
             >
-              <a className="cat-item rounded p-4 bg-white block" href="">
+              <a className="cat-item rounded py-[4rem] px-[5rem] lg:p-4 bg-white block" href="">
                 <i className="fa fa-3x fa-user-tie text-primary mb-4"></i>
                 <h6 className="mb-3">Human Resource</h6>
                 <p className="mb-0">123 Vacancy</p>
               </a>
             </div>
             <div
-              className="animate__animated animate__fadeInUp"
+              className="animate__animated animate__fadeInUp flex flex-col items-center lg:block lg:items-center"
               style={{ animationDelay: "0.7s" }}
             >
-              <a className="cat-item rounded p-4 bg-white block" href="">
+              <a className="cat-item rounded py-[4rem] px-[5rem] lg:p-4 bg-white block" href="">
                 <i className="fa fa-3x fa-tasks text-primary mb-4"></i>
                 <h6 className="mb-3">Project Management</h6>
                 <p className="mb-0">123 Vacancy</p>
               </a>
             </div>
             <div
-              className="animate__animated animate__fadeInUp"
+              className="animate__animated animate__fadeInUp flex flex-col items-center lg:block lg:items-center"
               style={{ animationDelay: "0.1s" }}
             >
-              <a className="cat-item rounded p-4 bg-white block" href="">
+              <a className="cat-item rounded py-[4rem] px-[5rem] lg:p-4 bg-white block" href="">
                 <i className="fa fa-3x fa-chart-line text-primary mb-4"></i>
                 <h6 className="mb-3">Business Development</h6>
                 <p className="mb-0">123 Vacancy</p>
               </a>
             </div>
             <div
-              className="animate__animated animate__fadeInUp"
+              className="animate__animated animate__fadeInUp flex flex-col items-center lg:block lg:items-center"
               style={{ animationDelay: "0.3s" }}
               >
-              <a className="cat-item rounded p-4 bg-white block" href="">
+              <a className="cat-item rounded py-[4rem] px-[5rem] lg:p-4 bg-white block" href="">
                 <i className="fa fa-3x fa-hands-helping text-primary mb-4"></i>
                 <h6 className="mb-3">Sales & Communication</h6>
                 <p className="mb-0">123 Vacancy</p>
               </a>
             </div>
             <div
-              className="animate__animated animate__fadeInUp"
+              className="animate__animated animate__fadeInUp flex flex-col items-center lg:block lg:items-center"
               style={{ animationDelay: "0.5s" }}
             >
-              <a className="cat-item rounded p-4 bg-white block" href="">
+              <a className="cat-item rounded py-[4rem] px-[5rem] lg:p-4 bg-white block" href="">
                 <i className="fa fa-3x fa-book-reader text-primary mb-4"></i>
                 <h6 className="mb-3">Teaching & Education</h6>
                 <p className="mb-0">123 Vacancy</p>
               </a>
             </div>
             <div
-              className="animate__animated animate__fadeInUp"
+              className="animate__animated animate__fadeInUp flex flex-col items-center lg:block lg:items-center"
               style={{ animationDelay: "0.7s" }}
             >
-              <a className="cat-item rounded p-4 bg-white block" href="">
+              <a className="cat-item rounded py-[4rem] px-[6.5rem] lg:p-4 bg-white block" href="">
                 <i className="fa fa-3x fa-drafting-compass text-primary mb-4"></i>
                 <h6 className="mb-3">Design & Creative</h6>
                 <p className="mb-0">123 Vacancy</p>
@@ -215,7 +213,7 @@ const HeroSection = ({ images }) => {
 
       {/* Job Section */}
 
-      <div>
+      <div className="pb-10">
         <div>
           <h1 className="text-center font-bold text-4xl">Job Listing</h1>
         </div>
@@ -248,15 +246,17 @@ const HeroSection = ({ images }) => {
       </div>
 
       {/* Testinomial */}
-      <Testimonials />
+      {/* <Testimonials />  */}
 
       <div>
         <Footer />
       </div>
-    </div>
+    {/* </div> */}
     </div>
             </>
   );
 };
 
 export default HeroSection;
+
+
