@@ -13,13 +13,13 @@
  * @todo prevent animationend bubling
  * @todo itemsScaleUp
  * @todo Test Zepto
- * @todo stagePadding calculate wrong active classes
+ * @todo stagePadding calculate wrong active classNameNameNameNamees
  */
 ;(function($, window, document, undefined) {
 
 	/**
 	 * Creates a carousel.
-	 * @class The Owl Carousel.
+	 * @classNameNameNameName The Owl Carousel.
 	 * @public
 	 * @param {HTMLElement|jQuery} element - The element to create the carousel for.
 	 * @param {Object} [options] - The options
@@ -220,16 +220,16 @@
 		itemElement: 'div',
 		stageElement: 'div',
 
-		refreshClass: 'owl-refresh',
-		loadedClass: 'owl-loaded',
-		loadingClass: 'owl-loading',
-		rtlClass: 'owl-rtl',
-		responsiveClass: 'owl-responsive',
-		dragClass: 'owl-drag',
-		itemClass: 'owl-item',
-		stageClass: 'owl-stage',
-		stageOuterClass: 'owl-stage-outer',
-		grabClass: 'owl-grab'
+		refreshclassNameNameNameName: 'owl-refresh',
+		loadedclassNameNameNameName: 'owl-loaded',
+		loadingclassNameNameNameName: 'owl-loading',
+		rtlclassNameNameNameName: 'owl-rtl',
+		responsiveclassNameNameNameName: 'owl-responsive',
+		dragclassNameNameNameName: 'owl-drag',
+		itemclassNameNameNameName: 'owl-item',
+		stageclassNameNameNameName: 'owl-stage',
+		stageOuterclassNameNameNameName: 'owl-stage-outer',
+		grabclassNameNameNameName: 'owl-grab'
 	};
 
 	/**
@@ -345,8 +345,8 @@
 
 			this._clones = clones;
 
-			$(append).addClass('cloned').appendTo(this.$stage);
-			$(prepend).addClass('cloned').prependTo(this.$stage);
+			$(append).addclassNameNameNameName('cloned').appendTo(this.$stage);
+			$(prepend).addclassNameNameNameName('cloned').prependTo(this.$stage);
 		}
 	}, {
 		filter: [ 'width', 'items', 'settings' ],
@@ -432,12 +432,12 @@
 				}
 			}
 
-			this.$stage.children('.active').removeClass('active');
-			this.$stage.children(':eq(' + matches.join('), :eq(') + ')').addClass('active');
+			this.$stage.children('.active').removeclassNameNameNameName('active');
+			this.$stage.children(':eq(' + matches.join('), :eq(') + ')').addclassNameNameNameName('active');
 
 			if (this.settings.center) {
-				this.$stage.children('.center').removeClass('center');
-				this.$stage.children().eq(this.current()).addClass('center');
+				this.$stage.children('.center').removeclassNameNameNameName('center');
+				this.$stage.children().eq(this.current()).addclassNameNameNameName('center');
 			}
 		}
 	} ];
@@ -450,7 +450,7 @@
 		this.enter('initializing');
 		this.trigger('initialize');
 
-		this.$element.toggleClass(this.settings.rtlClass, this.settings.rtl);
+		this.$element.toggleclassNameNameNameName(this.settings.rtlclassNameNameNameName, this.settings.rtl);
 
 		if (this.settings.autoWidth && !this.is('pre-loading')) {
 			var imgs, nestedSelector, width;
@@ -463,11 +463,11 @@
 			}
 		}
 
-		this.$element.addClass(this.options.loadingClass);
+		this.$element.addclassNameNameNameName(this.options.loadingclassNameNameNameName);
 
 		// create stage
-		this.$stage = $('<' + this.settings.stageElement + ' class="' + this.settings.stageClass + '"/>')
-			.wrap('<div class="' + this.settings.stageOuterClass + '"/>');
+		this.$stage = $('<' + this.settings.stageElement + ' classNameNameNameName="' + this.settings.stageclassNameNameNameName + '"/>')
+			.wrap('<div classNameNameNameName="' + this.settings.stageOuterclassNameNameNameName + '"/>');
 
 		// append stage
 		this.$element.append(this.$stage.parent());
@@ -485,8 +485,8 @@
 		}
 
 		this.$element
-			.removeClass(this.options.loadingClass)
-			.addClass(this.options.loadedClass);
+			.removeclassNameNameNameName(this.options.loadingclassNameNameNameName)
+			.addclassNameNameNameName(this.options.loadedclassNameNameNameName);
 
 		// register event handlers
 		this.registerEventHandlers();
@@ -497,7 +497,7 @@
 
 	/**
 	 * Setups the current settings.
-	 * @todo Remove responsive classes. Why should adaptive designs be brought into IE8?
+	 * @todo Remove responsive classNameNameNameNamees. Why should adaptive designs be brought into IE8?
 	 * @todo Support for media queries by using `matchMedia` would be nice.
 	 * @public
 	 */
@@ -522,10 +522,10 @@
 			}
 			delete settings.responsive;
 
-			// responsive class
-			if (settings.responsiveClass) {
-				this.$element.attr('class',
-					this.$element.attr('class').replace(new RegExp('(' + this.options.responsiveClass + '-)\\S+\\s', 'g'), '$1' + match)
+			// responsive classNameNameNameName
+			if (settings.responsiveclassNameNameNameName) {
+				this.$element.attr('classNameNameNameName',
+					this.$element.attr('classNameNameNameName').replace(new RegExp('(' + this.options.responsiveclassNameNameNameName + '-)\\S+\\s', 'g'), '$1' + match)
 				);
 			}
 		}
@@ -559,7 +559,7 @@
 
 		if (!event.data) {
 			event.data = $('<' + this.settings.itemElement + '/>')
-				.addClass(this.options.itemClass).append(item)
+				.addclassNameNameNameName(this.options.itemclassNameNameNameName).append(item)
 		}
 
 		this.trigger('prepared', { content: event.data });
@@ -618,11 +618,11 @@
 
 		this.optionsLogic();
 
-		this.$element.addClass(this.options.refreshClass);
+		this.$element.addclassNameNameNameName(this.options.refreshclassNameNameNameName);
 
 		this.update();
 
-		this.$element.removeClass(this.options.refreshClass);
+		this.$element.removeclassNameNameNameName(this.options.refreshclassNameNameNameName);
 
 		this.leave('refreshing');
 		this.trigger('refreshed');
@@ -685,7 +685,7 @@
 		}
 
 		if (this.settings.mouseDrag) {
-			this.$element.addClass(this.options.dragClass);
+			this.$element.addclassNameNameNameName(this.options.dragclassNameNameNameName);
 			this.$stage.on('mousedown.owl.core', $.proxy(this.onDragStart, this));
 			this.$stage.on('dragstart.owl.core selectstart.owl.core', function() { return false });
 		}
@@ -731,7 +731,7 @@
 			this.invalidate('position');
 		}
 
-		this.$element.toggleClass(this.options.grabClass, event.type === 'mousedown');
+		this.$element.toggleclassNameNameNameName(this.options.grabclassNameNameNameName, event.type === 'mousedown');
 
 		this.speed(0);
 
@@ -808,7 +808,7 @@
 
 		$(document).off('.owl.core');
 
-		this.$element.removeClass(this.options.grabClass);
+		this.$element.removeclassNameNameNameName(this.options.grabclassNameNameNameName);
 
 		if (delta.x !== 0 && this.is('dragging') || !this.is('valid')) {
 			this.speed(this.settings.dragEndSpeed || this.settings.smartSpeed);
@@ -1415,13 +1415,13 @@
 		this.$stage.children().unwrap();
 
 		this.$element
-			.removeClass(this.options.refreshClass)
-			.removeClass(this.options.loadingClass)
-			.removeClass(this.options.loadedClass)
-			.removeClass(this.options.rtlClass)
-			.removeClass(this.options.dragClass)
-			.removeClass(this.options.grabClass)
-			.attr('class', this.$element.attr('class').replace(new RegExp(this.options.responsiveClass + '-\\S+\\s', 'g'), ''))
+			.removeclassNameNameNameName(this.options.refreshclassNameNameNameName)
+			.removeclassNameNameNameName(this.options.loadingclassNameNameNameName)
+			.removeclassNameNameNameName(this.options.loadedclassNameNameNameName)
+			.removeclassNameNameNameName(this.options.rtlclassNameNameNameName)
+			.removeclassNameNameNameName(this.options.dragclassNameNameNameName)
+			.removeclassNameNameNameName(this.options.grabclassNameNameNameName)
+			.attr('classNameNameNameName', this.$element.attr('classNameNameNameName').replace(new RegExp(this.options.responsiveclassNameNameNameName + '-\\S+\\s', 'g'), ''))
 			.removeData('owl.carousel');
 	};
 
@@ -1707,7 +1707,7 @@
 
 	/**
 	 * Creates the auto refresh plugin.
-	 * @class The Auto Refresh Plugin
+	 * @classNameNameNameName The Auto Refresh Plugin
 	 * @param {Owl} carousel - The Owl Carousel
 	 */
 	var AutoRefresh = function(carousel) {
@@ -1783,7 +1783,7 @@
 
 		this._visible = !this._visible;
 
-		this._core.$element.toggleClass('owl-hidden', !this._visible);
+		this._core.$element.toggleclassNameNameNameName('owl-hidden', !this._visible);
 
 		this._visible && (this._core.invalidate('width') && this._core.refresh());
 	};
@@ -1819,7 +1819,7 @@
 
 	/**
 	 * Creates the lazy plugin.
-	 * @class The Lazy Plugin
+	 * @classNameNameNameName The Lazy Plugin
 	 * @param {Owl} carousel - The Owl Carousel
 	 */
 	var Lazy = function(carousel) {
@@ -1955,7 +1955,7 @@
 
 	/**
 	 * Creates the auto height plugin.
-	 * @class The Auto Height Plugin
+	 * @classNameNameNameName The Auto Height Plugin
 	 * @param {Owl} carousel - The Owl Carousel
 	 */
 	var AutoHeight = function(carousel) {
@@ -1984,7 +1984,7 @@
 			}, this),
 			'loaded.owl.lazy': $.proxy(function(e) {
 				if (e.namespace && this._core.settings.autoHeight
-					&& e.element.closest('.' + this._core.settings.itemClass).index() === this._core.current()) {
+					&& e.element.closest('.' + this._core.settings.itemclassNameNameNameName).index() === this._core.current()) {
 					this.update();
 				}
 			}, this)
@@ -2003,7 +2003,7 @@
 	 */
 	AutoHeight.Defaults = {
 		autoHeight: false,
-		autoHeightClass: 'owl-height'
+		autoHeightclassNameNameNameName: 'owl-height'
 	};
 
 	/**
@@ -2024,7 +2024,7 @@
 
 		this._core.$stage.parent()
 			.height(maxheight)
-			.addClass(this._core.settings.autoHeightClass);
+			.addclassNameNameNameName(this._core.settings.autoHeightclassNameNameNameName);
 	};
 
 	AutoHeight.prototype.destroy = function() {
@@ -2053,7 +2053,7 @@
 
 	/**
 	 * Creates the video plugin.
-	 * @class The Video Plugin
+	 * @classNameNameNameName The Video Plugin
 	 * @param {Owl} carousel - The Owl Carousel
 	 */
 	var Video = function(carousel) {
@@ -2217,26 +2217,26 @@
 			dimensions = video.width && video.height ? 'style="width:' + video.width + 'px;height:' + video.height + 'px;"' : '',
 			customTn = target.find('img'),
 			srcType = 'src',
-			lazyClass = '',
+			lazyclassNameNameNameName = '',
 			settings = this._core.settings,
 			create = function(path) {
-				icon = '<div class="owl-video-play-icon"></div>';
+				icon = '<div classNameNameNameName="owl-video-play-icon"></div>';
 
 				if (settings.lazyLoad) {
-					tnLink = '<div class="owl-video-tn ' + lazyClass + '" ' + srcType + '="' + path + '"></div>';
+					tnLink = '<div classNameNameNameName="owl-video-tn ' + lazyclassNameNameNameName + '" ' + srcType + '="' + path + '"></div>';
 				} else {
-					tnLink = '<div class="owl-video-tn" style="opacity:1;background-image:url(' + path + ')"></div>';
+					tnLink = '<div classNameNameNameName="owl-video-tn" style="opacity:1;background-image:url(' + path + ')"></div>';
 				}
 				target.after(tnLink);
 				target.after(icon);
 			};
 
 		// wrap video content into owl-video-wrapper div
-		target.wrap('<div class="owl-video-wrapper"' + dimensions + '></div>');
+		target.wrap('<div classNameNameNameName="owl-video-wrapper"' + dimensions + '></div>');
 
 		if (this._core.settings.lazyLoad) {
 			srcType = 'data-src';
-			lazyClass = 'owl-lazy';
+			lazyclassNameNameNameName = 'owl-lazy';
 		}
 
 		// custom thumbnail
@@ -2281,7 +2281,7 @@
 	Video.prototype.stop = function() {
 		this._core.trigger('stop', null, 'video');
 		this._playing.find('.owl-video-frame').remove();
-		this._playing.removeClass('owl-video-playing');
+		this._playing.removeclassNameNameNameName('owl-video-playing');
 		this._playing = null;
 		this._core.leave('playing');
 		this._core.trigger('stopped', null, 'video');
@@ -2294,7 +2294,7 @@
 	 */
 	Video.prototype.play = function(event) {
 		var target = $(event.target),
-			item = target.closest('.' + this._core.settings.itemClass),
+			item = target.closest('.' + this._core.settings.itemclassNameNameNameName),
 			video = this._videos[item.attr('data-video')],
 			width = video.width || '100%',
 			height = video.height || this._core.$stage.height(),
@@ -2324,9 +2324,9 @@
 				'src="//view.vzaar.com/' + video.id + '/player?autoplay=true"></iframe>';
 		}
 
-		$('<div class="owl-video-frame">' + html + '</div>').insertAfter(item.find('.owl-video'));
+		$('<div classNameNameNameName="owl-video-frame">' + html + '</div>').insertAfter(item.find('.owl-video'));
 
-		this._playing = item.addClass('owl-video-playing');
+		this._playing = item.addclassNameNameNameName('owl-video-playing');
 	};
 
 	/**
@@ -2339,7 +2339,7 @@
 		var element = document.fullscreenElement || document.mozFullScreenElement ||
 				document.webkitFullscreenElement;
 
-		return element && $(element).parent().hasClass('owl-video-frame');
+		return element && $(element).parent().hasclassNameNameNameName('owl-video-frame');
 	};
 
 	/**
@@ -2373,7 +2373,7 @@
 
 	/**
 	 * Creates the animate plugin.
-	 * @class The Navigation Plugin
+	 * @classNameNameNameName The Navigation Plugin
 	 * @param {Owl} scope - The Owl Carousel
 	 */
 	var Animate = function(scope) {
@@ -2415,7 +2415,7 @@
 	};
 
 	/**
-	 * Toggles the animation classes whenever an translations starts.
+	 * Toggles the animation classNameNameNameNamees whenever an translations starts.
 	 * @protected
 	 * @returns {Boolean|undefined}
 	 */
@@ -2446,22 +2446,22 @@
 			left = this.core.coordinates(this.previous) - this.core.coordinates(this.next);
 			previous.one($.support.animation.end, clear)
 				.css( { 'left': left + 'px' } )
-				.addClass('animated owl-animated-out')
-				.addClass(outgoing);
+				.addclassNameNameNameName('animated owl-animated-out')
+				.addclassNameNameNameName(outgoing);
 		}
 
 		if (incoming) {
 			next.one($.support.animation.end, clear)
-				.addClass('animated owl-animated-in')
-				.addClass(incoming);
+				.addclassNameNameNameName('animated owl-animated-in')
+				.addclassNameNameNameName(incoming);
 		}
 	};
 
 	Animate.prototype.clear = function(e) {
 		$(e.target).css( { 'left': '' } )
-			.removeClass('animated owl-animated-out owl-animated-in')
-			.removeClass(this.core.settings.animateIn)
-			.removeClass(this.core.settings.animateOut);
+			.removeclassNameNameNameName('animated owl-animated-out owl-animated-in')
+			.removeclassNameNameNameName(this.core.settings.animateIn)
+			.removeclassNameNameNameName(this.core.settings.animateOut);
 		this.core.onTransitionEnd();
 	};
 
@@ -2496,7 +2496,7 @@
 
 	/**
 	 * Creates the autoplay plugin.
-	 * @class The Autoplay Plugin
+	 * @classNameNameNameName The Autoplay Plugin
 	 * @param {Owl} scope - The Owl Carousel
 	 */
 	var Autoplay = function(carousel) {
@@ -2696,7 +2696,7 @@
 
 	/**
 	 * Creates the navigation plugin.
-	 * @class The Navigation Plugin
+	 * @classNameNameNameName The Navigation Plugin
 	 * @param {Owl} carousel - The Owl Carousel.
 	 */
 	var Navigation = function(carousel) {
@@ -2760,7 +2760,7 @@
 		this._handlers = {
 			'prepared.owl.carousel': $.proxy(function(e) {
 				if (e.namespace && this._core.settings.dotsData) {
-					this._templates.push('<div class="' + this._core.settings.dotClass + '">' +
+					this._templates.push('<div classNameNameNameName="' + this._core.settings.dotclassNameNameNameName + '">' +
 						$(e.content).find('[data-dot]').addBack('[data-dot]').attr('data-dot') + '</div>');
 				}
 			}, this),
@@ -2817,11 +2817,11 @@
 		navSpeed: false,
 		navElement: 'div',
 		navContainer: false,
-		navContainerClass: 'owl-nav',
-		navClass: [ 'owl-prev', 'owl-next' ],
+		navContainerclassNameNameNameName: 'owl-nav',
+		navclassNameNameNameName: [ 'owl-prev', 'owl-next' ],
 		slideBy: 1,
-		dotClass: 'owl-dot',
-		dotsClass: 'owl-dots',
+		dotclassNameNameNameName: 'owl-dot',
+		dotsclassNameNameNameName: 'owl-dots',
 		dots: true,
 		dotsEach: false,
 		dotsData: false,
@@ -2839,17 +2839,17 @@
 
 		// create DOM structure for relative navigation
 		this._controls.$relative = (settings.navContainer ? $(settings.navContainer)
-			: $('<div>').addClass(settings.navContainerClass).appendTo(this.$element)).addClass('disabled');
+			: $('<div>').addclassNameNameNameName(settings.navContainerclassNameNameNameName).appendTo(this.$element)).addclassNameNameNameName('disabled');
 
 		this._controls.$previous = $('<' + settings.navElement + '>')
-			.addClass(settings.navClass[0])
+			.addclassNameNameNameName(settings.navclassNameNameNameName[0])
 			.html(settings.navText[0])
 			.prependTo(this._controls.$relative)
 			.on('click', $.proxy(function(e) {
 				this.prev(settings.navSpeed);
 			}, this));
 		this._controls.$next = $('<' + settings.navElement + '>')
-			.addClass(settings.navClass[1])
+			.addclassNameNameNameName(settings.navclassNameNameNameName[1])
 			.html(settings.navText[1])
 			.appendTo(this._controls.$relative)
 			.on('click', $.proxy(function(e) {
@@ -2859,13 +2859,13 @@
 		// create DOM structure for absolute navigation
 		if (!settings.dotsData) {
 			this._templates = [ $('<div>')
-				.addClass(settings.dotClass)
+				.addclassNameNameNameName(settings.dotclassNameNameNameName)
 				.append($('<span>'))
 				.prop('outerHTML') ];
 		}
 
 		this._controls.$absolute = (settings.dotsContainer ? $(settings.dotsContainer)
-			: $('<div>').addClass(settings.dotsClass).appendTo(this.$element)).addClass('disabled');
+			: $('<div>').addclassNameNameNameName(settings.dotsclassNameNameNameName).appendTo(this.$element)).addclassNameNameNameName('disabled');
 
 		this._controls.$absolute.on('click', 'div', $.proxy(function(e) {
 			var index = $(e.target).parent().is(this._controls.$absolute)
@@ -2951,14 +2951,14 @@
 			index = this._core.relative(this._core.current()),
 			loop = settings.loop || settings.rewind;
 
-		this._controls.$relative.toggleClass('disabled', !settings.nav || disabled);
+		this._controls.$relative.toggleclassNameNameNameName('disabled', !settings.nav || disabled);
 
 		if (settings.nav) {
-			this._controls.$previous.toggleClass('disabled', !loop && index <= this._core.minimum(true));
-			this._controls.$next.toggleClass('disabled', !loop && index >= this._core.maximum(true));
+			this._controls.$previous.toggleclassNameNameNameName('disabled', !loop && index <= this._core.minimum(true));
+			this._controls.$next.toggleclassNameNameNameName('disabled', !loop && index >= this._core.maximum(true));
 		}
 
-		this._controls.$absolute.toggleClass('disabled', !settings.dots || disabled);
+		this._controls.$absolute.toggleclassNameNameNameName('disabled', !settings.dots || disabled);
 
 		if (settings.dots) {
 			difference = this._pages.length - this._controls.$absolute.children().length;
@@ -2971,8 +2971,8 @@
 				this._controls.$absolute.children().slice(difference).remove();
 			}
 
-			this._controls.$absolute.find('.active').removeClass('active');
-			this._controls.$absolute.children().eq($.inArray(this.current(), this._pages)).addClass('active');
+			this._controls.$absolute.find('.active').removeclassNameNameNameName('active');
+			this._controls.$absolute.children().eq($.inArray(this.current(), this._pages)).addclassNameNameNameName('active');
 		}
 	};
 
@@ -3079,7 +3079,7 @@
 
 	/**
 	 * Creates the hash plugin.
-	 * @class The Hash Plugin
+	 * @classNameNameNameName The Hash Plugin
 	 * @param {Owl} carousel - The Owl Carousel
 	 */
 	var Hash = function(carousel) {

@@ -5,7 +5,7 @@
     var spinner = function () {
         setTimeout(function () {
             if ($('#spinner').length > 0) {
-                $('#spinner').removeClass('show');
+                $('#spinner').removeclassNameNameNameName('show');
             }
         }, 1);
     };
@@ -49,8 +49,8 @@
         loop: true,
         nav : true,
         navText : [
-            '<i class="bi bi-chevron-left"></i>',
-            '<i class="bi bi-chevron-right"></i>'
+            '<i classNameNameNameName="bi bi-chevron-left"></i>',
+            '<i classNameNameNameName="bi bi-chevron-right"></i>'
         ]
     });
 

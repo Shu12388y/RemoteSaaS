@@ -23,15 +23,15 @@
     value: true
   });
 
-  var _class, _temp;
+  var _classNameNameNameName, _temp;
 
-  function _classCallCheck(instance, Constructor) {
+  function _classNameNameNameNameCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
+      throw new TypeError("Cannot call a classNameNameNameName as a function");
     }
   }
 
-  var _createClass = function () {
+  var _createclassNameNameNameName = function () {
     function defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
@@ -137,13 +137,13 @@
   // Minimalistic WeakMap shim, just in case.
   var WeakMap = window.WeakMap || window.MozWeakMap || function () {
     function WeakMap() {
-      _classCallCheck(this, WeakMap);
+      _classNameNameNameNameCallCheck(this, WeakMap);
 
       this.keys = [];
       this.values = [];
     }
 
-    _createClass(WeakMap, [{
+    _createclassNameNameNameName(WeakMap, [{
       key: 'get',
       value: function get(key) {
         for (var i = 0; i < this.keys.length; i++) {
@@ -174,9 +174,9 @@
   }();
 
   // Dummy MutationObserver, to avoid raising exceptions.
-  var MutationObserver = window.MutationObserver || window.WebkitMutationObserver || window.MozMutationObserver || (_temp = _class = function () {
+  var MutationObserver = window.MutationObserver || window.WebkitMutationObserver || window.MozMutationObserver || (_temp = _classNameNameNameName = function () {
     function MutationObserver() {
-      _classCallCheck(this, MutationObserver);
+      _classNameNameNameNameCallCheck(this, MutationObserver);
 
       if (typeof console !== 'undefined' && console !== null) {
         console.warn('MutationObserver is not supported by your browser.');
@@ -184,13 +184,13 @@
       }
     }
 
-    _createClass(MutationObserver, [{
+    _createclassNameNameNameName(MutationObserver, [{
       key: 'observe',
       value: function observe() {}
     }]);
 
     return MutationObserver;
-  }(), _class.notSupported = true, _temp);
+  }(), _classNameNameNameName.notSupported = true, _temp);
 
   // getComputedStyle shim, from http://stackoverflow.com/a/21797294
   var getComputedStyle = window.getComputedStyle || function getComputedStyle(el) {
@@ -216,11 +216,11 @@
     function WOW() {
       var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
 
-      _classCallCheck(this, WOW);
+      _classNameNameNameNameCallCheck(this, WOW);
 
       this.defaults = {
-        boxClass: 'wow',
-        animateClass: 'animated',
+        boxclassNameNameNameName: 'wow',
+        animateclassNameNameNameName: 'animated',
         offset: 0,
         mobile: true,
         live: true,
@@ -253,10 +253,10 @@
       }
       // Map of elements to animation names:
       this.animationNameCache = new WeakMap();
-      this.wowEvent = createEvent(this.config.boxClass);
+      this.wowEvent = createEvent(this.config.boxclassNameNameNameName);
     }
 
-    _createClass(WOW, [{
+    _createclassNameNameNameName(WOW, [{
       key: 'init',
       value: function init() {
         this.element = window.document.documentElement;
@@ -273,7 +273,7 @@
         var _this = this;
 
         this.stopped = false;
-        this.boxes = [].slice.call(this.element.querySelectorAll('.' + this.config.boxClass));
+        this.boxes = [].slice.call(this.element.querySelectorAll('.' + this.config.boxclassNameNameNameName));
         this.all = this.boxes.slice(0);
         if (this.boxes.length) {
           if (this.disabled()) {
@@ -334,7 +334,7 @@
           return;
         }
         element = element.parentNode || element;
-        var iterable = element.querySelectorAll('.' + this.config.boxClass);
+        var iterable = element.querySelectorAll('.' + this.config.boxclassNameNameNameName);
         for (var i = 0; i < iterable.length; i++) {
           var box = iterable[i];
           if (!isIn(box, this.all)) {
@@ -353,7 +353,7 @@
       key: 'show',
       value: function show(box) {
         this.applyStyle(box);
-        box.className = box.className + ' ' + this.config.animateClass;
+        box.className = box.className + ' ' + this.config.animateclassNameNameNameName;
         if (this.config.callback != null) {
           this.config.callback(box);
         }
@@ -395,7 +395,7 @@
       value: function resetAnimation(event) {
         if (event.type.toLowerCase().indexOf('animationend') >= 0) {
           var target = event.target || event.srcElement;
-          target.className = target.className.replace(this.config.animateClass, '').trim();
+          target.className = target.className.replace(this.config.animateclassNameNameNameName, '').trim();
         }
       }
     }, {

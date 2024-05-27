@@ -1,9 +1,34 @@
 import React from 'react'
 import { ArrowRight } from 'lucide-react'
+import { app } from "../firebase/firebase";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { useState } from "react";
+import { Toaster, toast } from 'react-hot-toast';
+import { useNavigate, Link } from "react-router-dom";
 
+
+const auth = getAuth(app)
 function SignUp() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const createUser = () => {
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        toast.success("User Successfully Created");
+
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.error("Error creating user:", error.message);
+        toast.error("Error creating user: " + error.message);
+      });
+  };
+
   return (
     <section className='flex flex-col items-center justify-center p-[8rem]'>
+      <Toaster />
       <div className="grid grid-cols-1 lg:grid-cols-2">
         <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
           <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
@@ -21,26 +46,14 @@ function SignUp() {
             <form action="#" method="POST" className="mt-8">
               <div className="space-y-5">
                 <div>
-                  <label htmlFor="name" className="text-base font-medium text-gray-900">
-                    {' '}
-                    Full Name{' '}
-                  </label>
-                  <div className="mt-2">
-                    <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                      type="text"
-                      placeholder="Full Name"
-                      id="name"
-                    ></input>
-                  </div>
-                </div>
-                <div>
                   <label htmlFor="email" className="text-base font-medium text-gray-900">
                     {' '}
                     Email address{' '}
                   </label>
                   <div className="mt-2">
                     <input
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="email"
                       placeholder="Email"
@@ -57,6 +70,7 @@ function SignUp() {
                   </div>
                   <div className="mt-2">
                     <input
+                      onChange={(e) => setPassword(e.target.value)}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="password"
                       placeholder="Password"
@@ -66,6 +80,7 @@ function SignUp() {
                 </div>
                 <div>
                   <button
+                    onClick={createUser}
                     type="button"
                     className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
                   >

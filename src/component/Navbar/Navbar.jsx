@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { signOut } from 'firebase/auth';
+import {auth} from "../../firebase/firebase"
+import { useCookies } from 'react-cookie';
+
+
 
 const menuItems = [
   {
@@ -19,7 +24,28 @@ const menuItems = [
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [imagedata,setImageData] = React.useState(false)
+  const imageData = localStorage.getItem("image")
+  const [cookie,setCookie] = useCookies(["token"])
 
+  useEffect(() => {
+    const imageData = localStorage.getItem("image");
+    setImageData(!!imageData); 
+  }, [imageData]);
+  
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        setCookie("token", ""); 
+        localStorage.removeItem("image"); 
+        setImageData(false); 
+        navigate('/');
+        console.log('Signed out successfully');
+      })
+      .catch((error) => {
+        console.log('Error signing out', error);
+      });
+  };
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -49,7 +75,7 @@ export function Navbar() {
             ))}
           </ul>
         </div>
-        <div className="hidden space-x-2 lg:block">
+        {imagedata? <button onClick={handleLogout}> <img    className="relative z-0 inline-block h-10 w-10 rounded-full ring-2 ring-white" src={imageData} /></button> : <div className="hidden space-x-2 lg:block">
           <Link to="/signup">
             <button
               type="button"
@@ -67,6 +93,9 @@ export function Navbar() {
             </button>
           </Link>
         </div>
+
+        }
+       
         <div className="lg:hidden">
           <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
         </div>

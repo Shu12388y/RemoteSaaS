@@ -3,9 +3,11 @@ import { data } from "./components/jobs/data/data";
 import Feature from "./components/jobs/Feature";
 import FullTime from "./components/jobs/FullTime";
 import PartTime from "./components/jobs/PartTime";
-import Testimonials from "./components/testinomial/Testinomial";
 import Footer from "../Footer/Footer";
-import Slider from "./components/slider/Slider";
+import Figure from "./components/Figure/Figure";
+import HeroSections from "./components/HeroSection/HeroSection";
+import TestinomialRender from "../Testinomial/TestinomialRender"
+import Price from "../../price/Price";
 const HeroSection = ({ images }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeTab, setActiveTab] = useState(<Feature data={data} />);
@@ -29,7 +31,8 @@ const HeroSection = ({ images }) => {
     <div className="flex flex-col items-center justify-center overflow-x-hidden">
 
    <div className="w-4/5">
-      <Slider/>
+      {/* <Slider/> */}
+      <HeroSections/>
 
    </div>
     {/* <div className="h-full md:h-96"> */}
@@ -152,6 +155,9 @@ const HeroSection = ({ images }) => {
           </div>
         </div>
       </div>
+      <div>
+        <Figure/>
+      </div>
 
       {/* About Section */}
 
@@ -246,7 +252,16 @@ const HeroSection = ({ images }) => {
       </div>
 
       {/* Testinomial */}
-      {/* <Testimonials />  */}
+      <div>
+      <TestinomialRender/>
+
+      </div>
+
+      {/* price */}
+      <div>
+        <Price/>
+
+      </div>
 
       <div>
         <Footer />

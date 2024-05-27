@@ -1,7 +1,74 @@
 import React from 'react'
 import { ArrowRight } from 'lucide-react'
+import { useState,useEffect } from 'react';
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {app} from "../firebase/firebase";
+import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
+
+
+
+const auth = getAuth(app);
+const googleAuthProvider = new GoogleAuthProvider();
 
 function LogIn() {
+  const [email,setEmail]  = useState("");
+  const [password,setPassword] =  useState("")
+  const [disabled,setDisabled] = useState(false)
+  const [cookie,setCookie] = useCookies(['token'])
+  // const [cookies,setCookies] = useCookies(['image'])
+      const navigate = useNavigate();
+
+    const handleSignIn = () => {
+      signInWithEmailAndPassword(auth, email, password)
+          .then((user) => {
+            console.log(user)
+              // toast.success("User Successfully Logged In");
+              // const applyJobId = localStorage.getItem('jobID');
+              // if (applyJobId) {
+              //   const webURL= "http://localhost:5173/job" || "https://letsremotejob.com/job"
+              //     toast.success("User Successfully Logged In with Google");
+              //     const URI = applyJobId.replace(webURL,"")
+              //     navigate(`/job${URI}`); // Redirect to job details page by job ID
+              // } else {
+              //     navigate('/'); // Redirect to home page upon successful login
+              // }
+          })
+          .catch((error) => {
+              console.error("Error signing in:", error.message);
+              toast.error("Error signing in: " + error.message);
+          });
+  };
+  
+  const handleGoogleSignIn = () => {
+      signInWithPopup(auth, googleAuthProvider)
+          .then((user) => {
+            setCookie('token',user.user.accessToken)
+            localStorage.setItem("image",user.user.photoURL)
+            navigate("/")
+
+              // const applyJobId = localStorage.getItem('jobID');
+              // if (applyJobId) {
+              //   const webURL= "http://localhost:5173/job" ||  "https://letsremotejob.com/job"
+              //     toast.success("User Successfully Logged In with Google");
+              //     const URI = applyJobId.replace(webURL,"")
+              //     navigate(`/job${URI}`); // Redirect to job details page by job ID
+              // } else {
+              //     navigate('/'); // Redirect to home page upon successful login
+              // }
+          })
+          .catch((error) => {
+              console.error("Error signing in with Google:", error.message);
+              toast.error("Error signing in with Google: " + error.message);
+          });
+  };
+  
+ 
+
+
+  
+
+
   return (
     <section className='flex flex-col items-center justify-center p-[8rem]'>
       <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -114,6 +181,8 @@ function LogIn() {
                   </label>
                   <div className="mt-2">
                     <input
+                    onChange={(e)=>setEmail(e.target.value)}
+                    value={email}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="email"
                       placeholder="Email"
@@ -137,6 +206,8 @@ function LogIn() {
                   </div>
                   <div className="mt-2">
                     <input
+                    onChange={(e)=>setPassword(e.target.value)}
+                    value={password}
                       className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                       type="password"
                       placeholder="Password"
@@ -145,6 +216,7 @@ function LogIn() {
                 </div>
                 <div>
                   <button
+                  onClick={handleSignIn}
                     type="button"
                     className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
                   >
@@ -155,6 +227,7 @@ function LogIn() {
             </form>
             <div className="mt-3 space-y-3">
               <button
+              onClick={handleGoogleSignIn}
                 type="button"
                 className="relative inline-flex w-full items-center justify-center rounded-md border border-gray-400 bg-white px-3.5 py-2.5 font-semibold text-gray-700 transition-all duration-200 hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black focus:outline-none"
               >
