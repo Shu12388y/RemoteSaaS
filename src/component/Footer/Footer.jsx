@@ -7,40 +7,33 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="mb-8">
             <h5 className="text-white mb-4">Company</h5>
-            <a className="text-gray-400 block mb-2" href="#">About Us</a>
-            <a className="text-gray-400 block mb-2" href="#">Contact Us</a>
-            <a className="text-gray-400 block mb-2" href="#">Our Services</a>
-            <a className="text-gray-400 block mb-2" href="#">Privacy Policy</a>
+            <a className="text-gray-400 block mb-2" href="#">Services</a>
+            <a className="text-gray-400 block mb-2" href="#">Community</a>
+            <a className="text-gray-400 block mb-2" href="#">Products</a>
+            <a className="text-gray-400 block mb-2" href="#">About</a>
             <a className="text-gray-400 block mb-2" href="#">Terms & Condition</a>
           </div>
           <div className="mb-8">
             <h5 className="text-white mb-4">Quick Links</h5>
-            <a className="text-gray-400 block mb-2" href="#">About Us</a>
-            <a className="text-gray-400 block mb-2" href="#">Contact Us</a>
-            <a className="text-gray-400 block mb-2" href="#">Our Services</a>
-            <a className="text-gray-400 block mb-2" href="#">Privacy Policy</a>
-            <a className="text-gray-400 block mb-2" href="#">Terms & Condition</a>
+            <a className="text-gray-400 block mb-2" href="#">Account</a>
+            <a className="text-gray-400 block mb-2" href="#">Help </a>
+            <a className="text-gray-400 block mb-2" href="#">Contacts</a>
+            <a className="text-gray-400 block mb-2" href="#">Customer Support</a>
           </div>
           <div className="mb-8">
-            <h5 className="text-white mb-4">Contact</h5>
-            <p className="text-gray-400 mb-2"><i className="fas fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-            <p className="text-gray-400 mb-2"><i className="fas fa-phone-alt me-3"></i>+012 345 67890</p>
-            <p className="text-gray-400 mb-2"><i className="fas fa-envelope me-3"></i>info@example.com</p>
-            <div className="flex pt-2">
-              <a className="text-gray-400 me-2 hover:text-gray-200" href="#"><i className="fab fa-twitter"></i></a>
-              <a className="text-gray-400 me-2 hover:text-gray-200" href="#"><i className="fab fa-facebook-f"></i></a>
-              <a className="text-gray-400 me-2 hover:text-gray-200" href="#"><i className="fab fa-youtube"></i></a>
-              <a className="text-gray-400 hover:text-gray-200" href="#"><i className="fab fa-linkedin-in"></i></a>
+            <h5 className="text-white mb-4">About Lets Remote</h5>
+            <p className="text-gray-400 mb-2">As the Lets Code community, our unwavering mission is to empower and support every job  <br/> seeker and tech enthusiast on their journey towards success. </p>
+          
+            <div className="flex pt-4 space-x-3">
+              <a  href="https://twitter.com/Lets__Code" className="text-gray-400 me-2 hover:text-gray-200" ><i className="fab fa-twitter"></i></a>
+              <a  href="https://www.facebook.com/letscodeforever" className="text-gray-400 me-2 hover:text-gray-200" ><i className="fab fa-facebook-f"></i></a>
+              <a  href="https://www.youtube.com/channel/UC8yrWVx-ezAW0jh8hlFUFUQ" className="text-gray-400 me-2 hover:text-gray-200" ><i className="fab fa-youtube"></i></a>
+              <a href="https://www.linkedin.com/company/lets-code-forever" className="text-gray-400 hover:text-gray-200" ><i className="fab fa-linkedin-in"></i></a>
+              <a href="https://www.instagram.com/letscodeforever" className="text-gray-400 hover:text-gray-200"><i className="fab fa-instagram"></i></a>
             </div>
           </div>
-          <div>
-            <h5 className="text-white mb-4">Newsletter</h5>
-            <p className="text-gray-400 mb-2">Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-            <div className="relative" style={{ maxWidth: "400px" }}>
-              <input className="bg-transparent w-full py-3 px-4 mb-2 border border-gray-400 rounded" type="text" placeholder="Your email"/>
-              <button type="button" className="bg-blue-500 text-white py-2 px-4 absolute top-0 right-0">Sign Up</button>
-            </div>
-          </div>
+         
+        
         </div>
       </div>
       <div className="container mx-auto mt-8 px-4">

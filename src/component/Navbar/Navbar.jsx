@@ -17,9 +17,19 @@ const menuItems = [
     href: '/about',
   },
   {
+    name: 'Services',
+    href: '/service',
+  },
+  {
+    name: 'Resources',
+    href: '/resource',
+  },
+  {
     name: 'Contact',
     href: '/contact',
   },
+  
+
 ];
 
 export function Navbar() {
@@ -52,21 +62,21 @@ export function Navbar() {
 
   return (
     <div className="relative w-full bg-white shadow-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2">
           <span>
             <Link to={"/"}>
-              <h2 className='text-green-500'> <i>Let's Remote</i> </h2>
+            <h2 className="text-2xl font-bold text-green-500">Let's Remote</h2>
             </Link>
           </span>
         </div>
         <div className="hidden grow items-start lg:flex">
-          <ul className="ml-12 inline-flex space-x-8">
+          <ul className="ml-auto inline-flex space-x-8 text-1xl">
             {menuItems.map((item) => (
               <li key={item.name}>
                 <Link
                   to={item.href}
-                  className="inline-flex items-center text-sm font-semibold text-gray-800 hover:text-gray-900"
+                  className="inline-flex items-center text-md font-semibold  text-gray-800 hover:text-gray-900"
                 >
                   {item.name}
 
@@ -81,7 +91,7 @@ export function Navbar() {
               type="button"
               className="rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-black hover:bg-black/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
-              Sign In
+              Sign Up
             </button>
           </Link>
           <Link to="/login">
@@ -93,9 +103,7 @@ export function Navbar() {
             </button>
           </Link>
         </div>
-
         }
-       
         <div className="lg:hidden">
           <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
         </div>
@@ -106,7 +114,7 @@ export function Navbar() {
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center space-x-2">
                     <span>
-                      <h2><i className='text-green-500'>Let's Remote</i></h2>
+                      <h2>Let className="text-2xl">Let's Remote</h2>
                     </span>
                   </div>
                   <div className="-mr-2">

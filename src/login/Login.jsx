@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { ArrowRight } from 'lucide-react'
 import { useState,useEffect } from 'react';
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -11,7 +11,7 @@ import { useCookies } from 'react-cookie';
 const auth = getAuth(app);
 const googleAuthProvider = new GoogleAuthProvider();
 
-function LogIn() {
+function Login() {
   const [email,setEmail]  = useState("");
   const [password,setPassword] =  useState("")
   const [disabled,setDisabled] = useState(false)
@@ -165,7 +165,7 @@ function LogIn() {
             <p className="mt-2 text-sm text-gray-600">
               Don&apos;t have an account?{' '}
               <a
-                href="#"
+                href="/signup"
                 title=""
                 className="font-semibold text-black transition-all duration-200 hover:underline"
               >
@@ -268,4 +268,4 @@ function LogIn() {
 }
 
 
-export default LogIn
+export default Login
