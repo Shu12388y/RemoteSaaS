@@ -10,6 +10,7 @@ import Resources from "./component/Resources/Resource";
 import SignUp from "./signup/Signup";
 
 import Login from "./login/Login";
+import JobDetails from "./component/JobDetail/JobDetails";
 
 const HeroSection = lazy(() => import("./component/HeroSection/HeroSection"));
 
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/about" element={<AboutContent />} />
           <Route path="/contact" element={<ContactContent />} />
           <Route path="/service" element={<ServiceContent />} />
+          <Route path="/Job" element={<JobDetails />} />
           <Route path="/resource" element={<Resources />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />

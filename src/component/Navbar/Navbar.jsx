@@ -114,7 +114,7 @@ export function Navbar() {
                 <div className="flex items-center justify-between">
                   <div className="inline-flex items-center space-x-2">
                     <span>
-                      <h2>Let className="text-2xl">Let's Remote</h2>
+                      <h2 className="text-2xl font-bold text-green-500  ">Lets Remote</h2>
                     </span>
                   </div>
                   <div className="-mr-2">

@@ -56,7 +56,7 @@ const Resources = () => {
   return (
     <div>
      
-      <article className="max-w-6xl px-6 py-24 mx-auto space-y-16 dark:bg-gray-800 dark:text-gray-50">
+      <article className="max-w-6xl px-6 py-24 mx-auto space-y-16 dark:text-gray-50">
         <div className="w-full mx-auto space-y-4">
           <h1 className="text-5xl font-bold leading">How to Land Remote Jobs: Tips ?</h1>
 
