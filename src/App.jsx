@@ -13,6 +13,7 @@ import Login from "./login/Login";
 import JobDetails from "./component/JobDetail/JobDetails";
 
 const HeroSection = lazy(() => import("./component/HeroSection/HeroSection"));
+import Jobs from "./jobs/Jobs";
 
 const images = ["img/carousel-1.jpg", "img/carousel-2.jpg"];
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="/resource" element={<Resources />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/jobs/:id" element={<Jobs/>}/>
         </Routes>
         <Footer />
       </>

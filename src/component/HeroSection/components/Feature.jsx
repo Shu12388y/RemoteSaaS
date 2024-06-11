@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from "axios";
+import { Card } from './Card';
+
+
 
 const Feature = () => {
+
+
+    
     const [currentPage, setCurrentPage] = useState(1);
     const [searchTerm, setSearchTerm] = useState('');
+    const [card,setCard]  =  useState([])
     const [filters, setFilters] = useState({
         experience: '',
         category: '',
@@ -11,6 +19,23 @@ const Feature = () => {
         company: '',
     });
     const cardsPerPage = 10;
+
+useEffect(()=>{
+fetchData()
+},[])
+    async function fetchData(){
+        try {
+            const {data} = await axios.get('https://remoteapping.onrender.com/api/v1/getCompany');
+            setCard(data.data)
+
+        } catch (error) {
+            setCard([])
+            console.log(error)
+            
+        }
+
+
+    }
 
     // Dummy data for cards
     const dummyData = Array.from({ length: 50 }, (_, index) => ({
@@ -101,10 +126,10 @@ const Feature = () => {
                 </select>
             </div>
 
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
+            {/* <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
                 {currentCards.map((card) => (
                     <div key={card.id} className="relative bg-white py-6 px-6 rounded-3xl w-64 my-4 shadow-xl">
-                        {/* Card content */}
+                      
                         <p className="text-xl font-semibold my-2">{card.title}</p>
                         <p className="text-gray-600 mb-2">{card.description}</p>
                         <div className="flex justify-between items-center mb-4">
@@ -119,6 +144,16 @@ const Feature = () => {
                         </div>
                     </div>
                 ))}
+            </div> */}
+            <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4'>
+                {card.map((items,index)=>{
+                    return(
+                        <>
+                        <Card key={items._id + '-' + index} title={items.CompanyName} type={items.JobType} apply={items._id}/>
+                        </>
+                    )
+                })}
+
             </div>
             {/* Pagination */}
             <div className="flex justify-center mt-4">
