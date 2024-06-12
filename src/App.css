@@ -1,0 +1,57 @@
+/* App.css */
+
+.app.light {
+  --background-color: white;
+  --text-color: black;
+  --navbar-background-color: white;
+  --navbar-text-color: black;
+  --footer-background-color: #f1f1f1;
+  --footer-text-color: black;
+}
+
+.app.dark {
+  --background-color: #121212;
+  --text-color: white;
+  --navbar-background-color: #1f1f1f;
+  --navbar-text-color: white;
+  --footer-background-color: #1f1f1f;
+  --footer-text-color: white;
+}
+
+.app {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.navbar {
+  background-color: var(--navbar-background-color);
+  color: var(--navbar-text-color);
+}
+
+.footer {
+  background-color: var(--footer-background-color);
+  color: var(--footer-text-color);
+}
+
+.theme-toggle-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle-button:hover {
+  opacity: 0.8;
+}
+
+/* Additional styles for other components if necessary */
