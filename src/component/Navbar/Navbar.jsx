@@ -12,18 +12,12 @@ const menuItems = [
     name: 'Home',
     href: '/',
   },
-  {
-    name: 'About',
-    href: '/about',
-  },
+ 
   {
     name: 'Services',
     href: '/service',
   },
-  {
-    name: 'Resources',
-    href: '/resource',
-  },
+ 
   {
     name: 'Contact',
     href: '/contact',
