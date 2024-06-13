@@ -1,25 +1,11 @@
 import { useState, useEffect } from "react";
 
-import HeroSections from "./components/HeroSection/HeroSection";
+// import HeroSections from "./components/HeroSection/HeroSection";
 
 import Price from "../../price/Price";
 import Feature from "./components/Feature";
-const HeroSection = ({ images }) => {
+const HeroSection = () => {
  
-
-  const nextSlide = () => {
-    setActiveIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      nextSlide();
-    }, 3000);
-
-    return () => clearInterval(intervalId);
-  }, []);
 
   return (
     <><div className="flex flex-col items-center justify-center overflow-x-hidden">
@@ -27,7 +13,7 @@ const HeroSection = ({ images }) => {
     
    <div className="w-full">
       {/* <Slider/> */}
-      <HeroSections/>
+      {/* <HeroSections/> */}
 
    </div>
     {/* <div className="h-full md:h-96"> */}

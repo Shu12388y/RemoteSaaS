@@ -1,36 +1,43 @@
-import React from 'react'
-import { ArrowUpRight } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-export function Card({title,type,apply}) {
+export function Card({ ExpectedSalary, type, Role, Skills, CompanyName, apply }) {
+  // Split the skills string into an array of skills if it's a string
+  const skillsArray = Array.isArray(Skills) ? Skills : Skills.split(',').map(skill => skill.trim());
+
   return (
     <div className="w-[300px] rounded-md border">
-      <img
-        src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJsb2d8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
-        alt="Laptop"
-        className="h-[200px] w-full rounded-t-md object-cover"
-      />
       <div className="p-4">
-        <h1 className="inline-flex items-center text-lg font-semibold">
-          {title} &nbsp; <ArrowUpRight className="h-4 w-4" />
-        </h1>
-        <p className="mt-3 text-sm text-gray-600">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, debitis?
+        <p className="mt-3 text-sm text-black">
+          Package: <span className='font-bold'>{ExpectedSalary}</span>
         </p>
-        <div className="mt-4">
-          <span className="mb-2 mr-2 inline-block rounded-full bg-gray-100 px-3 py-1 text-[10px] font-semibold text-gray-900">
-            Job Type: {type}
+        <div className="mt-4 flex flex-wrap items-center">
+          <span className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-[14px] font-semibold text-black">
+            Job Location: <span className='font-bold'>{type}</span>
           </span>
+          <span className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-[10px] font-semibold text-gray-900">
+            <span className='font-bold text-black text-lg'>{Role}</span>
+          </span>
+          {skillsArray.map((skill, index) => (
+            <span key={index} className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-[10px] font-semibold text-gray-900">
+              {skill}
+            </span>
+          ))}
         </div>
-        <Link to={`/jobs/${apply}`}>
-        <button
-          type="button"
-          className="mt-4 w-full rounded-sm bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-          >
-          Apply Now
-        </button>
-            </Link>
+        <div className="mt-4 flex justify-between   items-center">
+          <span className="inline-block rounded-full  px-3 py-1 text-[18px] font-semibold text-black">
+            <span className='font-bold'>{CompanyName}</span>
+          </span>
+          <Link to={`/jobs/${apply}`}>
+            <button
+              type="button"
+              className="rounded-sm bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            >
+              View
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
-  )
+  );
 }
