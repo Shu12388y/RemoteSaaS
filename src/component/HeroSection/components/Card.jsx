@@ -15,8 +15,8 @@ export function Card({ ExpectedSalary, type, Role, Skills, CompanyName, apply })
           <span className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-[14px] font-semibold text-black">
             Job Location: <span className='font-bold'>{type}</span>
           </span>
-          <span className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-[10px] font-semibold text-gray-900">
-            <span className='font-bold text-black text-lg'>{Role}</span>
+          <span className="mb-2 mr-2 inline-block px-3 py-1 text-[10px] font-semibold text-gray-900">
+            <span className='font-bold text-black text-xl'>{Role}</span>
           </span>
           {skillsArray.map((skill, index) => (
             <span key={index} className="mb-2 mr-2 inline-block rounded-full bg-gray-200 px-3 py-1 text-[10px] font-semibold text-gray-900">

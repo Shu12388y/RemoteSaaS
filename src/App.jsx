@@ -9,9 +9,10 @@ import ServiceContent from "./component/Service/ServiceContent";
 import Resources from "./component/Resources/Resource";
 import SignUp from "./signup/Signup";
 import Login from "./login/Login";
-import JobDetails from "./component/JobDetail/JobDetails";
+// import JobDetails from "./component/JobDetail/JobDetails";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import SubscribeJob from "./subscribeJobs/SubscribeJob";
 import "./App.css"; // Make sure to create this CSS file
 
 const HeroSection = lazy(() => import("./component/HeroSection/HeroSection"));
@@ -50,6 +51,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/jobs/:id" element={<Jobs />} />
+          <Route path="/subscribe" element={<SubscribeJob/>}/>
         </Routes>
         <Footer className="footer" />
       </div>

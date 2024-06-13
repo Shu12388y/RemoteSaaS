@@ -2,11 +2,14 @@ import { useEffect, useState, lazy, Suspense } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import parse from 'html-react-parser';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 function FetchJob() {
   const [detail, setDetail] = useState({});
   const { id } = useParams();
-
+  const [loading,setLoading] =  useState(true)
+  
   useEffect(() => {
     fetchJobs();
   }, []);
@@ -15,8 +18,10 @@ function FetchJob() {
     try {
       const { data } = await axios.get(`https://remoteapping.onrender.com/api/v1/getCompanyById/${id}`);
       setDetail(data.data);
+      setLoading(false)
     } catch (error) {
       setDetail({});
+      setLoading(true)
     }
   }
 
@@ -38,11 +43,10 @@ function FetchJob() {
   };
 
   return (
-    <>
-     <div className='flex flex-col items-center justify-center py-[1rem] px-[20rem]'>
+    <>{loading? <Skeleton height={600}  count={1}/> : <div className='flex flex-col items-center justify-center py-[1rem] px-[20rem]'>
   <h1 className='font-bold text-3xl py-1'>{detail.CompanyName}</h1>
-  <span className='font-semibold text-xl py-2'>Role: {detail.Roles}</span>
-  <p className='py-3'>{detail.description ? parse(detail.description) : ''}</p>
+  <span className='font-semibold text-xl py-2'>Role: {detail.Roles }</span>
+  <p className='py-3'>{detail.description ? parse(detail.description) : '' }</p>
   <div className="flex justify-center gap-4 w-full">
     <a href={detail.ApplyLink}>
       <button
@@ -60,7 +64,8 @@ function FetchJob() {
       Share
     </button>
   </div>
-</div>
+</div>}
+     
     </>
   );
 }
