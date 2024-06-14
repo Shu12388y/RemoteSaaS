@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
-
 // import HeroSections from "./components/HeroSection/HeroSection";
-
+import { HeroOne } from "./components/HeroSection/Upper";
 import Price from "../../price/Price";
 import Feature from "./components/Feature";
 const HeroSection = () => {
@@ -9,21 +7,12 @@ const HeroSection = () => {
 
   return (
     <><div className="flex flex-col items-center justify-center overflow-x-hidden">
-
-    
-   <div className="w-full">
-      {/* <Slider/> */}
-      {/* <HeroSections/> */}
-
-   </div>
-    {/* <div className="h-full md:h-96"> */}
-     
-      
+      <HeroOne/>    
       {/* Category section */}
       <div className="container-xxl py-5">
         <div className="container">
           <h1
-            className="text-center font-bold text-3xl text-black uppercase mb-5 animate__animated animate__fadeInUp"
+            className="text-center font-bold dark:text-white text-3xl text-black uppercase mb-5 animate__animated animate__fadeInUp"
             style={{ animationDelay: "0.1s" }}
           >
             Explore By Category
@@ -113,9 +102,9 @@ const HeroSection = () => {
 
       {/* Job Section */}
 
-      <div className="w-full px-4 sm:px-6 lg:px-8 pb-10">
+      <div className="w-full px-4 sm:px-6  lg:px-8 pb-10">
   <div>
-    <h1 className="text-center font-bold text-3xl mb-3 uppercase   text-black">Job for you</h1>
+    <h1 className="text-center dark:text-white font-bold text-3xl mb-3 uppercase   text-black">Job for you</h1>
   </div>
    <Feature/>
  

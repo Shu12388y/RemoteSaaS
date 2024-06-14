@@ -84,7 +84,7 @@ function Login() {
           <div className="relative">
             <div className="w-full max-w-xl xl:mx-auto xl:w-full xl:max-w-xl xl:pr-24">
               <h3 className="text-4xl font-bold text-white">
-                Now you dont have to rely on your designer to create a new page
+                Access thousands of remote job listings, and manage your job applications all in one place.
               </h3>
               <ul className="mt-10 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
                 <li className="flex items-center space-x-3">
@@ -102,7 +102,7 @@ function Login() {
                       ></path>
                     </svg>
                   </div>
-                  <span className="text-lg font-medium text-white"> Commercial License </span>
+                  <span className="text-lg font-medium text-white"> Extensive Remote Job Listings </span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <div className="inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500">
@@ -119,7 +119,7 @@ function Login() {
                       ></path>
                     </svg>
                   </div>
-                  <span className="text-lg font-medium text-white"> Unlimited Exports </span>
+                  <span className="text-lg font-medium text-white"> Top Employers </span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <div className="inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500">
@@ -136,7 +136,7 @@ function Login() {
                       ></path>
                     </svg>
                   </div>
-                  <span className="text-lg font-medium text-white"> 120+ Coded Blocks </span>
+                  <span className="text-lg font-medium text-white"> Seamless Application Process </span>
                 </li>
                 <li className="flex items-center space-x-3">
                   <div className="inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-blue-500">
@@ -153,7 +153,7 @@ function Login() {
                       ></path>
                     </svg>
                   </div>
-                  <span className="text-lg font-medium text-white"> Design Files Included </span>
+                  <span className="text-lg font-medium text-white"> Career Resources </span>
                 </li>
               </ul>
             </div>
@@ -161,13 +161,13 @@ function Login() {
         </div>
         <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
           <div className="xl:mx-auto xl:w-full xl:max-w-sm 2xl:max-w-md">
-            <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl">Log in</h2>
-            <p className="mt-2 text-sm text-gray-600">
+            <h2 className="text-3xl font-bold leading-tight dark:text-white text-black sm:text-4xl">Log in</h2>
+            <p className="mt-2 text-sm dark:text-gray-400 text-gray-600">
               Don&apos;t have an account?{' '}
               <a
                 href="/signup"
                 title=""
-                className="font-semibold text-black transition-all duration-200 hover:underline"
+                className="font-semibold text-black dark:text-gray-400 transition-all duration-200 hover:underline"
               >
                 Create a free account
               </a>
@@ -175,7 +175,7 @@ function Login() {
             <form action="#" method="POST" className="mt-8">
               <div className="space-y-5">
                 <div>
-                  <label htmlFor="" className="text-base font-medium text-gray-900">
+                  <label htmlFor="" className="text-base dark:text-white font-medium text-gray-900">
                     {' '}
                     Email address{' '}
                   </label>
@@ -191,7 +191,7 @@ function Login() {
                 </div>
                 <div>
                   <div className="flex items-center justify-between">
-                    <label htmlFor="" className="text-base font-medium text-gray-900">
+                    <label htmlFor="" className="text-base dark:text-white font-medium text-gray-900">
                       {' '}
                       Password{' '}
                     </label>
