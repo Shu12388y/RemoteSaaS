@@ -1,10 +1,11 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Card } from './Card';
 import Skeleton from 'react-loading-skeleton';
+
 const Feature = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [cards, setCards] = useState([]);
-    const [loading,setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
     const [filters, setFilters] = useState({
         Experience: '',
         category: '',
@@ -12,7 +13,6 @@ const Feature = () => {
         Company: '',
     });
     const [currentPage, setCurrentPage] = useState(1);
-    const [loading, setLoading] = useState(false);
     const jobsPerPage = 10;
 
     const fetchData = useCallback(async () => {
@@ -20,11 +20,9 @@ const Feature = () => {
         try {
             const response = await fetch('https://remotebackend-2.onrender.com/api/v1/getCompany');
             const data = await response.json();
-            setLoading(false)
             setCards(data.data);
         } catch (error) {
             setCards([]);
-            setLoading(true)
             // console.error('Error fetching data', error);
         }
         setLoading(false);
