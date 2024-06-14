@@ -1,6 +1,6 @@
 /* App.css */
 
-.app.light {
+/* .app.light {
   --background-color: white;
   --text-color: black;
   --navbar-background-color: white;
@@ -52,6 +52,30 @@
 
 .theme-toggle-button:hover {
   opacity: 0.8;
-}
+} */
 
 /* Additional styles for other components if necessary */
+/* App.css */
+body {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark {
+  background-color: #1a202c; /* Example dark background color */
+  color: #a0aec0; /* Example dark text color */
+}
+
+.theme-toggle-button {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  font-size: 1.5rem;
+}
+
+.theme-toggle-button:hover {
+  color: #f6e05e; /* Example hover color for light mode */
+}

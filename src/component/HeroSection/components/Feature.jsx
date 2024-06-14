@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Card } from './Card';
-
+import Skeleton from 'react-loading-skeleton';
 const Feature = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [cards, setCards] = useState([]);
+    const [loading,setLoading] = useState(true)
     const [filters, setFilters] = useState({
         Experience: '',
         category: '',
@@ -21,11 +22,12 @@ const Feature = () => {
         try {
             const response = await fetch('https://remotebackend-2.onrender.com/api/v1/getCompany');
             const data = await response.json();
-            console.log(data);
+            setLoading(false)
             setCards(data.data);
         } catch (error) {
             setCards([]);
-            console.error('Error fetching data', error);
+            setLoading(true)
+            // console.error('Error fetching data', error);
         }
     }
 
@@ -110,8 +112,8 @@ const Feature = () => {
             </div>
 
             {/* Cards */}
-            <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4'>
-                {currentJobs.map((item, index) => (
+            <div className=''>
+                {loading? <Skeleton height={500} width={100000} count={1} /> : <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4' >    {currentJobs.map((item, index) => (
                     <Card 
                         key={item._id + '-' + index}
                         CompanyName={item.CompanyName}
@@ -121,7 +123,8 @@ const Feature = () => {
                         Role={item.Roles}
                         apply={item._id} 
                     />
-                ))}
+                ))}</div>}
+              
             </div>
 
             {/* Pagination */}
