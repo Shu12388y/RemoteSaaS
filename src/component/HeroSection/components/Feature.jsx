@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Card } from './Card';
 
 const Feature = () => {
@@ -11,13 +11,11 @@ const Feature = () => {
         Company: '',
     });
     const [currentPage, setCurrentPage] = useState(1);
+    const [loading, setLoading] = useState(false);
     const jobsPerPage = 10;
 
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    async function fetchData() {
+    const fetchData = useCallback(async () => {
+        setLoading(true);
         try {
             const response = await fetch('https://remotebackend-2.onrender.com/api/v1/getCompany');
             const data = await response.json();
@@ -27,7 +25,12 @@ const Feature = () => {
             setCards([]);
             console.error('Error fetching data', error);
         }
-    }
+        setLoading(false);
+    }, []);
+
+    useEffect(() => {
+        fetchData();
+    }, [fetchData]);
 
     const handleSearchChange = (event) => {
         setSearchTerm(event.target.value);
@@ -64,8 +67,8 @@ const Feature = () => {
             {/* Filters */}
             <div className="flex mb-4 space-x-4">
                 <select
-                    name="experience"
-                    value={filters.experience}
+                    name="Experience"
+                    value={filters.Experience}
                     onChange={handleFilterChange}
                     className="border border-gray-300 rounded-md px-3 py-2"
                 >
@@ -75,8 +78,8 @@ const Feature = () => {
                     <option value="3 years">3 years</option>
                 </select>
                 <select
-                    name="role"
-                    value={filters.role}
+                    name="Role"
+                    value={filters.Role}
                     onChange={handleFilterChange}
                     className="border border-gray-300 rounded-md px-3 py-2"
                 >
@@ -86,8 +89,8 @@ const Feature = () => {
                     <option value="Role 3">Role 3</option>
                 </select>
                 <select
-                    name="company"
-                    value={filters.company}
+                    name="Company"
+                    value={filters.Company}
                     onChange={handleFilterChange}
                     className="border border-gray-300 rounded-md px-3 py-2"
                 >
@@ -110,19 +113,23 @@ const Feature = () => {
             </div>
 
             {/* Cards */}
-            <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4'>
-                {currentJobs.map((item, index) => (
-                    <Card 
-                        key={item._id + '-' + index}
-                        CompanyName={item.CompanyName}
-                        ExpectedSalary={item.ExpectedSalary}
-                        type={item.JobType}
-                        Skills={item.Skills}
-                        Role={item.Roles}
-                        apply={item._id} 
-                    />
-                ))}
-            </div>
+            {loading ? (
+                <div>Loading...</div>
+            ) : (
+                <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4'>
+                    {currentJobs.map((item, index) => (
+                        <Card 
+                            key={item._id + '-' + index}
+                            CompanyName={item.CompanyName}
+                            ExpectedSalary={item.ExpectedSalary}
+                            type={item.JobType}
+                            Skills={item.Skills}
+                            Role={item.Roles}
+                            apply={item._id} 
+                        />
+                    ))}
+                </div>
+            )}
 
             {/* Pagination */}
             <div className="mt-4">
