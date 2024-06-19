@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 const pricingPlans = [
   {
@@ -27,7 +28,42 @@ const pricingPlans = [
   },
 ];
 
+
+
+      
+      
+      
 function Price() {
+  
+  async function fetchData(){
+    const {data} = await axios.get('http://localhost:8000/api/v1/subscribe');
+    const option ={
+      key: "rzp_test_WeETo7vdwZ5Xlc",
+      subscription_id: `${data.message}`,
+      name: "Let's Remote",
+      description: "Monthly Test Plan",
+      image: "/your_logo.jpg",
+			handler: async function(response) {
+        try {
+          await axios.post("http://localhost:8000/api/v1/verify",{
+            razorpay_payment_id:response.razorpay_payment_id,
+            razorpay_subscription_id:response.razorpay_subscription_id,
+            razorpay_signature:response.razorpay_signature
+          })
+        } catch (error) {
+          console.log(error)
+          
+        }
+				},
+      theme: {
+        color: "#F37254"
+      }
+    };
+    const  rzp1 = new window.Razorpay(option);
+      rzp1.open();
+			
+}
+
   return (
     <>
       <section>
@@ -70,7 +106,7 @@ function Price() {
                         {feature}
                       </p>
                     ))}
-                    <button className={`flex items-center mt-auto text-white ${plan.popular ? 'bg-indigo-500 hover:bg-indigo-600' : 'bg-gray-400 hover:bg-gray-500'} border-0 py-2 px-4 w-full focus:outline-none rounded`}>
+                    <button onClick={fetchData}  className={`flex items-center mt-auto text-white ${plan.popular ? 'bg-indigo-500 hover:bg-indigo-600' : 'bg-gray-400 hover:bg-gray-500'} border-0 py-2 px-4 w-full focus:outline-none rounded`}>
                       Subscribe
                       <svg
                         fill="none"
