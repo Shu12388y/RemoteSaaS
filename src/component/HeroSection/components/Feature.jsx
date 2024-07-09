@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Card } from './Card';
 import Skeleton from 'react-loading-skeleton';
+import JobCard from './JobCard/JobCard';
 
 const Feature = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -116,17 +117,21 @@ const Feature = () => {
             {loading ? (
                 <div>Loading...</div>
             ) : (
-                <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4'>
+                <div className='grid grid-cols-1 gap-6'>
                     {currentJobs.map((item, index) => (
-                        <Card 
-                            key={item._id + '-' + index}
-                            CompanyName={item.CompanyName}
-                            ExpectedSalary={item.ExpectedSalary}
-                            type={item.JobType}
-                            Skills={item.Skills}
-                            Role={item.Roles}
-                            apply={item._id} 
-                        />
+                        <>
+                        <JobCard company={item.CompanyName} position={item.Roles} apply={item._id} salary={item.ExpectedSalary}/>
+                        </>
+
+                        // <Card 
+                        //     key={item._id + '-' + index}
+                        //     CompanyName={item.CompanyName}
+                        //     ExpectedSalary={item.ExpectedSalary}
+                        //     type={item.JobType}
+                        //     Skills={item.Skills}
+                        //     Role={item.Roles}
+                        //     apply={item._id} 
+                        // />
                     ))}
                 </div>
             )}

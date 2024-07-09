@@ -12,6 +12,7 @@ import Login from "./login/Login";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import SubscribeJob from "./subscribeJobs/SubscribeJob";
+import JobDetail from "./jobDetail/JobDetail";
 import "./App.css";
 
 const HeroSection = lazy(() => import("./component/HeroSection/HeroSection"));
@@ -54,7 +55,7 @@ const App = () => {
           <Route path="/resource" element={<Resources />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/jobs/:id" element={<Jobs />} />
+          <Route path="/jobs/:id" element={<JobDetail/>} />
           <Route path="/subscribe" element={<SubscribeJob />} />
         </Routes>
         <Footer className="footer" />

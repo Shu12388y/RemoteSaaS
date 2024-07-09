@@ -2,12 +2,44 @@
 import { HeroOne } from "./components/HeroSection/Upper";
 import Price from "../../price/Price";
 import Feature from "./components/Feature";
+import Card from "./components/Card/Card";
+
+
+// post catgories
+const post = [
+  {
+    img: "https://cdn-icons-png.freepik.com/256/15245/15245336.png?uid=R155124616&ga=GA1.1.107076403.1719854617&semt=ais_hybrid",
+    header: "Marketing",
+    position: "120 openings"
+  },
+  {
+    img: "https://cdn-icons-png.freepik.com/256/7181/7181823.png?uid=R155124616&ga=GA1.1.107076403.1719854617&semt=ais_hybrid",
+    header: "Engineering",
+    position: "240 openings"
+  },
+  {
+    img: "https://cdn-icons-png.freepik.com/256/10488/10488742.png?uid=R155124616&ga=GA1.1.107076403.1719854617&semt=ais_hybrid",
+    header: "Human Resource",
+    position: "230 openings"
+  },
+  {
+    img: "https://cdn-icons-png.freepik.com/256/8955/8955245.png?uid=R155124616&ga=GA1.1.107076403.1719854617&semt=ais_hybrid",
+    header: "Project Manager",
+    position: "250 openings"
+  }
+]
+
+
+
 const HeroSection = () => {
- 
+
 
   return (
-    <><div className="flex flex-col items-center justify-center overflow-x-hidden">
-      <HeroOne/>    
+    <>
+    <div className="flex flex-col items-center justify-center overflow-x-hidden">
+      <div className=" w-full">
+        <HeroOne />
+      </div>
       {/* Category section */}
       <div className="container-xxl py-5">
         <div className="container">
@@ -17,118 +49,61 @@ const HeroSection = () => {
           >
             Explore By Category
           </h1>
-          <div className="grid grid-rows-1 lg:grid-cols-4 md:grid-cols-2 gap-4 items-center justify-center">
-            <div
-              className="animate__animated animate__fadeInUp flex flex-col items-center  lg:block lg:items-center"
-              style={{ animationDelay: "0.1s" }}
-              >
-              <a className="cat-item rounded py-[4rem] px-[6.5rem] lg:p-[1.8rem] bg-white block" href="">
-                <i className="fa fa-3x fa-mail-bulk text-primary mb-4"></i>
-                <h6 className="mb-3">Marketing</h6>
-               
-              </a>
-            </div>
-            <div
-              className="animate__animated animate__fadeInUp flex flex-col items-center lg:block lg:items-center"
-              style={{ animationDelay: "0.3s" }}
-            >
-              <a className="cat-item rounded py-[4rem] px-[5rem] lg:p-4 bg-white block" href="">
-                <i className="fa fa-3x fa-headset text-primary mb-4"></i>
-                <h6 className="mb-3">Engineering and Techology</h6>
-                <p className="mb-0">123 Vacancy</p>
-              </a>
-            </div>
-            <div
-              className="animate__animated animate__fadeInUp flex flex-col items-center lg:block lg:items-center"
-              style={{ animationDelay: "0.5s" }}
-            >
-              <a className="cat-item rounded py-[4rem] px-[5rem] lg:p-4 bg-white block" href="">
-                <i className="fa fa-3x fa-user-tie text-primary mb-4"></i>
-                <h6 className="mb-3">Human Resource</h6>
-                <p className="mb-0">123 Vacancy</p>
-              </a>
-            </div>
-            <div
-              className="animate__animated animate__fadeInUp flex flex-col items-center lg:block lg:items-center"
-              style={{ animationDelay: "0.7s" }}
-            >
-              <a className="cat-item rounded py-[4rem] px-[5rem] lg:p-[1.8rem] bg-white block" href="">
-                <i className="fa fa-3x fa-tasks text-primary mb-4"></i>
-                <h6 className="mb-3">Project Management</h6>
-               
-              </a>
-            </div>
-            <div
-              className="animate__animated animate__fadeInUp flex flex-col items-center lg:block lg:items-center"
-              style={{ animationDelay: "0.1s" }}
-            >
-              <a className="cat-item rounded py-[4rem] px-[5rem]  lg:p-[1.8rem] bg-white block" href="">
-                <i className="fa fa-3x fa-chart-line text-primary mb-4"></i>
-                <h6 className="mb-3">Business Development</h6>
-                
-              </a>
-            </div>
-            <div
-              className="animate__animated animate__fadeInUp flex flex-col items-center lg:block lg:items-center"
-              style={{ animationDelay: "0.3s" }}
-              >
-              <a className="cat-item rounded py-[4rem] px-[5rem]  lg:p-[1.8rem] bg-white block" href="">
-                <i className="fa fa-3x fa-hands-helping text-primary mb-4"></i>
-                <h6 className="mb-3">Sales & Communication</h6>
-                
-              </a>
-            </div>
+          <div className="grid grid-rows-1 lg:grid-cols-4 gap-2 items-center justify-center">
+            {post.map((ele, index) => {
+              return (
+                <>
+                  <div key={index + "-" + index} className="hover:shadow-md">
+                    <Card img={ele.img} header={ele.header} position={ele.position} />
+                  </div>
+                </>
+              )
+            })}
            
-            <div
-              className="animate__animated animate__fadeInUp flex flex-col items-center lg:block lg:items-center"
-              style={{ animationDelay: "0.7s" }}
-            >
-              <a className="cat-item rounded py-[4rem] px-[6.5rem]  lg:p-[1.8rem] bg-white block" href="">
-                <i className="fa fa-3x fa-drafting-compass text-primary mb-4"></i>
-                <h6 className="mb-3">Design & Creative</h6>
-              
-              </a>
-            </div>
           </div>
+           <div className="flex flex-col items-center justify-center mt-10">
+            <button  className="rounded-md bg-yellow-400 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-600/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600">Explore More</button>
+            </div>
+
         </div>
       </div>
       <div>
-       
+
       </div>
 
       {/* About Section */}
 
-      
+
 
       {/* Job Section */}
 
-      <div className="w-full px-4 sm:px-6  lg:px-8 pb-10">
-  <div>
-    <h1 className="text-center dark:text-white font-bold text-3xl mb-3 uppercase   text-black">Job for you</h1>
-  </div>
-   <Feature/>
- 
-</div>
+      <div className="w-full px-4 sm:px-6  lg:px-8 pb-10 bg-white">
+        <div className="pt-10">
+          <h1 className="text-center dark:text-white font-bold text-3xl mb-3 uppercase   text-black">Recent Available Jobs</h1>
+        </div>
+        <Feature />
+
+      </div>
 
 
       {/* Testinomial */}
       <div>
-     
+
 
       </div>
 
       {/* price */}
       <div>
-        <Price/>
+        <Price />
 
       </div>
 
       <div>
-       
+
       </div>
-    {/* </div> */}
+      {/* </div> */}
     </div>
-            </>
+    </>
   );
 };
 
