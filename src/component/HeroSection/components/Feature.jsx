@@ -19,7 +19,7 @@ const Feature = () => {
     const fetchData = useCallback(async () => {
         setLoading(true);
         try {
-            const response = await fetch('https://remotebackend-2.onrender.com/api/v1/getCompany');
+            const response = await fetch('https://letsremote.letsresource.in/api/v1/getCompany');
             const data = await response.json();
             setCards(data.data);
         } catch (error) {
@@ -55,7 +55,7 @@ const Feature = () => {
     return (
         <div className="flex flex-col items-center justify-center">
             {/* Search input */}
-            <div className="flex items-center justify-center mb-4">
+            {/* <div className="flex items-center justify-center mb-4">
                 <input
                     type="text"
                     placeholder="Search job"
@@ -63,10 +63,10 @@ const Feature = () => {
                     onChange={handleSearchChange}
                     className="border border-gray-300 rounded-md px-3 py-2 w-full"
                 />
-            </div>
+            </div> */}
 
             {/* Filters */}
-            <div className="flex mb-4 space-x-4">
+            {/* <div className="flex mb-4 space-x-4">
                 <select
                     name="Experience"
                     value={filters.Experience}
@@ -111,7 +111,7 @@ const Feature = () => {
                     <option value="Category 2">Category 2</option>
                     <option value="Category 3">Category 3</option>
                 </select>
-            </div>
+            </div> */}
 
             {/* Cards */}
             {loading ? (
@@ -121,17 +121,7 @@ const Feature = () => {
                     {currentJobs.map((item, index) => (
                         <>
                         <JobCard company={item.CompanyName} position={item.Roles} apply={item._id} salary={item.ExpectedSalary}/>
-                        </>
-
-                        // <Card 
-                        //     key={item._id + '-' + index}
-                        //     CompanyName={item.CompanyName}
-                        //     ExpectedSalary={item.ExpectedSalary}
-                        //     type={item.JobType}
-                        //     Skills={item.Skills}
-                        //     Role={item.Roles}
-                        //     apply={item._id} 
-                        // />
+                        </> 
                     ))}
                 </div>
             )}

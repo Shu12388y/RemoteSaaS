@@ -16,7 +16,7 @@ function FetchJob() {
 
   async function fetchJobs() {
     try {
-      const { data } = await axios.get(`https://remoteapping.onrender.com/api/v1/getCompanyById/${id}`);
+      const { data } = await axios.get(`https://letsremote.letsresource.in/api/v1/getCompanyById/${id}`);
       setDetail(data.data);
       setLoading(false)
     } catch (error) {

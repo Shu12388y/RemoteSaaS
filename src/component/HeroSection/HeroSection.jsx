@@ -93,7 +93,7 @@ const HeroSection = () => {
       </div>
 
       {/* price */}
-      <div>
+      <div className="bg-white w-full">
         <Price />
 
       </div>

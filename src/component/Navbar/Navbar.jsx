@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
-import {auth} from "../../firebase/firebase"
-import { useCookies } from 'react-cookie';
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 
 
 
@@ -12,44 +10,22 @@ const menuItems = [
     name: 'Home',
     href: '/',
   },
- 
+
   {
     name: 'Services',
     href: '/service',
   },
- 
+
   {
     name: 'Contact',
     href: '/contact',
   },
-  
+
 
 ];
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [imagedata,setImageData] = React.useState(false)
-  const imageData = localStorage.getItem("image")
-  const [cookie,setCookie] = useCookies(["token"])
-
-  useEffect(() => {
-    const imageData = localStorage.getItem("image");
-    setImageData(!!imageData); 
-  }, [imageData]);
-  
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        setCookie("token", ""); 
-        localStorage.removeItem("image"); 
-        setImageData(false); 
-        navigate('/');
-        console.log('Signed out successfully');
-      })
-      .catch((error) => {
-        console.log('Error signing out', error);
-      });
-  };
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -60,7 +36,7 @@ export function Navbar() {
         <div className="inline-flex items-center space-x-2">
           <span>
             <Link to={"/"}>
-            <h2 className="text-2xl font-bold text-green-500">Let's Remote</h2>
+              <h2 className="text-2xl font-bold text-green-500">Let's Remote</h2>
             </Link>
           </span>
         </div>
@@ -79,7 +55,7 @@ export function Navbar() {
             ))}
           </ul>
         </div>
-        {imagedata? <button onClick={handleLogout}> <img    className="relative z-0 inline-block h-10 w-10 rounded-full ring-2 ring-white" src={imageData} /></button> : <div className="hidden space-x-2 lg:block">
+        {/* {imagedata? <button onClick={handleLogout}> <img className="relative z-0 inline-block h-10 w-10 rounded-full ring-2 ring-white ml-5" src={imageData} /></button> : <div className="hidden space-x-2 lg:block">
           <Link to="/signup">
             <button
               type="button"
@@ -97,7 +73,15 @@ export function Navbar() {
             </button>
           </Link>
         </div>
-        }
+        } */}
+        <div className='ml-8'>
+          <SignedOut>
+            <SignInButton className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black" />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </div>
         <div className="lg:hidden">
           <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
         </div>
@@ -139,22 +123,12 @@ export function Navbar() {
                   </nav>
                 </div>
                 <div className="mt-2 space-y-2">
-                  <Link to="/signup">
-                    <button
-                      type="button"
-                      className="w-full rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                    >
-                      Sign In
-                    </button>
-                  </Link>
-                  <Link to="/login">
-                    <button
-                      type="button"
-                      className="w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                    >
-                      Log In
-                    </button>
-                  </Link>
+                  <SignedOut>
+                    <SignInButton className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black" />
+                  </SignedOut>
+                  <SignedIn>
+                    <UserButton />
+                  </SignedIn>
                 </div>
               </div>
             </div>

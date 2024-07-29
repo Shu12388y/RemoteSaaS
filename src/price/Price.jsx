@@ -1,135 +1,102 @@
-import React from 'react';
-import axios from 'axios';
+import React from 'react'
+import { CheckCircle } from 'lucide-react';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+import { ArrowRight } from 'lucide-react';
 
-const pricingPlans = [
-  {
-    name: 'START',
-    price: 'Free',
-    features: [
-      'Daily 10 Jobs Updates',
-      'Exclusive OFF campus and On Campus Job updates',
-     
-    ],
-    popular: false,
-  },
-  {
-    name: 'PRO',
-    price: '$5',
-    duration: '/3mo',
-    features: [
-      'Daily 25 job updates for you',
-      'Remote Resume Building and Guidance',
-      'Remote Job Resources and Opportunities',
-      'How to get a remote job',
-      'Teach you how to make your github portfolio'
+export default function Price() {
+ 
 
-    ],
-    popular: true,
-  },
-];
-
-
-
-      
-      
-      
-function Price() {
   
-  async function fetchData(){
-    const {data} = await axios.get('http://localhost:8000/api/v1/subscribe');
-    const option ={
-      key: "rzp_test_WeETo7vdwZ5Xlc",
-      subscription_id: `${data.message}`,
-      name: "Let's Remote",
-      description: "Monthly Test Plan",
-      image: "/your_logo.jpg",
-			handler: async function(response) {
-        try {
-          await axios.post("http://localhost:8000/api/v1/verify",{
-            razorpay_payment_id:response.razorpay_payment_id,
-            razorpay_subscription_id:response.razorpay_subscription_id,
-            razorpay_signature:response.razorpay_signature
-          })
-        } catch (error) {
-          console.log(error)
-          
-        }
-				},
-      theme: {
-        color: "#F37254"
-      }
-    };
-    const  rzp1 = new window.Razorpay(option);
-      rzp1.open();
-			
-}
-
   return (
-    <>
-      <section>
-        <section className="text-gray-600  body-font overflow-hidden">
-          <div className="container px-5 py-24 mx-auto">
-            <div className="flex flex-col text-center w-full mb-20">
-              <h1 className="sm:text-4xl dark:text-white text-3xl font-medium title-font mb-2 text-gray-900">Pricing</h1>
-              <p className="lg:w-2/3 mx-auto leading-relaxed text-base text-gray-500">
-                Whatever you got the best you can get here ?.
-              </p>
-              
-            </div>
-            <div className="flex flex-wrap -m-4">
-              {pricingPlans.map((plan) => (
-                <div className="p-4 xl:w-1/2  md:w-1/2 w-full" key={plan.name}>
-                  <div className={`h-full p-6 rounded-lg border-2 ${plan.popular ? 'border-indigo-500' : 'border-gray-300'} flex flex-col relative overflow-hidden`}>
-                    {plan.popular && (
-                      <span className="bg-indigo-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">POPULAR</span>
-                    )}
-                    <h2 className="text-sm tracking-widest dark:text-white title-font mb-1 font-medium">{plan.name}</h2>
-                    <h1 className="text-5xl text-gray-900 pb-4 mb-4 border-b dark:text-white border-gray-200 leading-none">
-                      {plan.price}
-                      {plan.duration && <span className="text-lg ml-1 dark:text-white font-normal text-gray-500">{plan.duration}</span>}
-                    </h1>
-                    {plan.features.map((feature, index) => (
-                      <p className="flex items-center dark:text-white text-gray-600 mb-2" key={index}>
-                        <span className="w-4 h-4 mr-2 inline-flex  dark:text-white items-center justify-center bg-gray-400 text-white rounded-full flex-shrink-0">
-                          <svg
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2.5"
-                            className="w-3 h-3"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M20 6L9 17l-5-5"></path>
-                          </svg>
-                        </span>
-                        {feature}
-                      </p>
-                    ))}
-                    <button onClick={fetchData}  className={`flex items-center mt-auto text-white ${plan.popular ? 'bg-indigo-500 hover:bg-indigo-600' : 'bg-gray-400 hover:bg-gray-500'} border-0 py-2 px-4 w-full focus:outline-none rounded`}>
-                      Subscribe
-                      <svg
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        className="w-4 h-4 ml-auto"
-                        viewBox="0 0 24 24"
+    <section id='price' className="relative w-full overflow-hidden bg-white pb-14">
+      <div className="relative  z-10 mx-auto max-w-7xl px-4">
+        <div className="mx-auto md:max-w-4xl">
+          <div className="-m-5 flex flex-wrap">
+            <div className="w-full p-5 md:w-1/2">
+              <div className="rounded-md border bg-white bg-opacity-90">
+                <div className=" border-b">
+                  <div className="px-9 py-7">
+                    <h3 className="mb-3 text-xl font-bold leading-snug text-gray-900">Standard</h3>
+                    <p className="font-medium leading-relaxed text-gray-500">
+                      The Free Plan is perfect for job seekers and employers who are just getting started with remote work opportunities.
+                    </p>
+                  </div>
+                </div>
+                <div className="px-9 pb-9 pt-8">
+                  <p className="mb-6 font-medium leading-relaxed text-gray-600">
+                    Features included:
+                  </p>
+                  <ul className="mb-11">
+                    <li className="mb-4 flex items-center">
+                      <CheckCircle className="mr-2" size={16} />
+                      <p className="font-semibold leading-normal">20 Active Jobs Updates</p>
+                    </li>
+                    <li className="mb-4 flex items-center">
+                      <CheckCircle className="mr-2" size={16} />
+                      <p className="font-semibold leading-normal">Exclusive Job updates</p>
+                    </li>
+                  </ul>
+                  <p className="mb-6 text-lg font-semibold leading-normal text-gray-600">
+                    <span>Starting from</span>
+                    <span className="ml-2 text-gray-900">$0/mon</span>
+                  </p>
+                  <div className="md:inline-block">
+
+                    <button
+                      type="button"
+                      className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                       >
-                        <path d="M5 12h14M12 5l7 7-7 7"></path>
-                      </svg>
+                      Free
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="w-full p-5 md:w-1/2">
+              <div className="rounded-md border bg-white bg-opacity-90">
+                <div className=" border-b">
+                  <div className="px-9 py-7">
+                    <h3 className="mb-3 text-xl font-bold leading-snug text-gray-900">Pro</h3>
+                    <p className="font-medium leading-relaxed text-gray-500">
+                        The Pro Plan is designed for serious job seekers and employers who want to maximize their remote work potential.
+                    </p>
+                  </div>
+                </div>
+                <div className="px-9 pb-9 pt-8 backdrop:blur-md">
+                  <p className="mb-6 font-medium leading-relaxed text-gray-600">
+                    Features included:
+                  </p>
+                  <ul className="mb-11">
+                    <li className="mb-4 flex items-center">
+                      <CheckCircle className="mr-2" size={16} />
+                      <p className="font-semibold leading-normal">Daily 45 job updates for you</p>
+                    </li>
+                    <li className="mb-4 flex items-center">
+                      <CheckCircle className="mr-2" size={16} />
+                      <p className="font-semibold leading-normal">Resume Building and Guidance</p>
+                    </li> 
+                  </ul>
+                  <p className="mb-6 text-lg font-semibold leading-normal text-gray-600">
+                    <span>Starting from</span>
+                    <span className="ml-2 text-gray-900">$7/mo</span>
+                  </p>
+                  <div className="md:inline-block">
+                    <button
+                    disabled="true"
+                      type="button"
+                      className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                    >
+                      Coming Soon
                     </button>
                    
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
-        </section>
-      </section>
-    </>
-  );
+        </div>
+      </div>
+    </section>
+  )
 }
-
-export default Price;

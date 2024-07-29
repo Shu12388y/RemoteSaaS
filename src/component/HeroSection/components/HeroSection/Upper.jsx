@@ -10,6 +10,7 @@ export function HeroOne() {
             <div className="rounded-full bg-white p-1 px-2">
             </div>
           </div>
+          <div className='h-[7rem]'>
           <h1 className='mt-8 text-2xl font-bold tracking-tight text-black md:text-4xl lg:text-4xl'>
             <Typewriter
               options={{
@@ -17,8 +18,9 @@ export function HeroOne() {
                 autoStart: true,
                 loop: true,
               }}
-            />
+              />
           </h1>
+      </div>
           <p className="mt-8 text-lg text-gray-700">
             Explore Thousands of Work-from-Anywhere Opportunities. Your Gateway to Top Remote Jobs and Careers.
           </p>

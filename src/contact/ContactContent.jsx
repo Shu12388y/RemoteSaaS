@@ -24,8 +24,8 @@ const ContactContent = () => {
         <div className="flex items-stretch justify-center">
             <div className="grid md:grid-cols-2">
                 <div className="h-full pr-6">
-                    <p className="mt-3 mb-12 text-lg text-white ">
-                    Join us on our journey to redefine the future of work. Whether you are a freelancer, a small business owner, or part of a large enterprise, LetsRemote is here to support you every step of the way. ut.
+                    <p className="mt-3 mb-12 text-lg ">
+                    Join us on our journey to redefine the future of work. Whether you are a freelancer, a small business owner, or part of a large enterprise, LetsRemote is here to support you every step of the way.
                     </p>
                     <ul className="mb-6 md:mb-0">
                         <li className="flex">
