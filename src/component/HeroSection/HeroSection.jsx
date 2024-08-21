@@ -49,7 +49,7 @@ const HeroSection = () => {
           >
             Explore By Category
           </h1>
-          <div className="grid grid-rows-1 lg:grid-cols-4 gap-2 items-center justify-center">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 items-center justify-center">
             {post.map((ele, index) => {
               return (
                 <>

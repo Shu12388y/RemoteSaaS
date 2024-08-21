@@ -120,7 +120,7 @@ const Feature = () => {
                 <div className='grid grid-cols-1 gap-6'>
                     {currentJobs.map((item, index) => (
                         <>
-                        <JobCard company={item.CompanyName} position={item.Roles} apply={item._id} salary={item.ExpectedSalary}/>
+                        <JobCard company={item.CompanyName} position={item.Roles} apply={item._id} salary={item.ExpectedSalary} role={item.JobType} exp={item.Experience}/>
                         </> 
                     ))}
                 </div>

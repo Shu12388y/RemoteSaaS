@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import axios from "axios";
 import { useParams } from 'react-router-dom';
 import parse from 'html-react-parser';
 import { useNavigate } from 'react-router-dom';
 
-
-
-
-
-// random images
+// Random images
 const randomImages = [
     'https://cdn-icons-png.freepik.com/256/9072/9072328.png?uid=R155124616&ga=GA1.1.107076403.1719854617&semt=ais_hybrid',
     'https://cdn-icons-png.freepik.com/256/8386/8386177.png?uid=R155124616&ga=GA1.1.107076403.1719854617&semt=ais_hybrid',
@@ -20,50 +16,41 @@ const randomImages = [
     'https://cdn-icons-png.freepik.com/256/13492/13492919.png?uid=R155124616&ga=GA1.1.107076403.1719854617&semt=ais_hybrid'
 ];
 
-
-
-
-
-
 function JobDetail() {
     const navigate = useNavigate();
     const index = Math.floor(Math.random() * randomImages.length);
     const [detail, setDetail] = useState({});
     const { id } = useParams();
-    const [loading, setLoading] = useState(true)
-
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        window.scrollTo(0,0)
         async function fetchJobs() {
             try {
                 const { data } = await axios.get(`https://letsremote.letsresource.in/api/v1/getCompanyById/${id}`);
                 setDetail(data.data);
-                setLoading(false)
-                console.log(data.data)
+                setLoading(false);
             } catch (error) {
                 setDetail({});
-                setLoading(true)
+                setLoading(true);
             }
         }
-        fetchJobs()
-    }, [])
-
-
+        fetchJobs();
+    }, [id]);
 
     const handleApply = () => {
-        window.open(detail.ApplyLink
-            , '_blank');
+        window.open(detail.ApplyLink, '_blank');
+    };
 
-    }
     const handleShare = () => {
         const url = window.location.href;
         const title = 'Check out this job!';
         const text = `
-            Job Title: Job Title
-            Role: Role
-            Experience: Experience
-            Expected Salary: ExpectedSalary
-            Description: Description
+            Job Title: ${detail.Roles}
+            Role: ${detail.JobType}
+            Experience: ${detail.Experience}
+            Expected Salary: ${detail.ExpectedSalary}
+            Description: ${detail.description ? parse(detail.description) : ''}
         `;
 
         if (navigator.share) {
@@ -85,62 +72,81 @@ function JobDetail() {
         }
     };
 
-
-
     return (
-        <>
-            <div className='flex flex-col items-center justify-center'>
-                {/* header part */}
-                <div className='flex flex-col lg:gap-[40rem] lg:flex-row  items-center justify-around p-4 bg-[#ecf9f8]'>
-                    <div className='flex flex-row items-center gap-3 '>
-                        <img className='h-[90px]' src={randomImages[index]} alt="" />
-                        <div className='flex flex-col items-center'>
-                            <h1 className='text-4xl'>{detail.Roles}</h1>
-                            <h2 className='font-light'>{detail.CompanyName}</h2>
+        <div className='flex flex-col items-center justify-center overflow-x-hidden'>
+            {/* Header part */}
+            <div className='flex flex-col lg:flex-row items-center justify-between p-4 bg-[#ecf9f8] w-full lg:gap-8'>
+                <div className='flex flex-col md:flex-row items-center gap-3'>
+                    <img className='h-[90px] w-[90px]' src={randomImages[index]} alt="Company Logo" />
+                    <div className='text-center md:text-left'>
+                        <h1 className='text-4xl font-semibold'>{detail.Roles}</h1>
+                        <h2 className='font-light text-lg'>{detail.CompanyName}</h2>
+                    </div>
+                </div>
+
+                <div className='mt-4 lg:mt-0 font-semibold text-lg'>
+                    <span className='mr-3'>Posted on</span>
+                    <span className='text-black'>
+                        {detail.createdAt?.slice(0, 10)}
+                    </span>
+                </div>
+            </div>
+
+            {/* More detail */}
+            <div className='bg-white w-full flex flex-col items-center justify-center py-4'>
+                <div className='flex flex-col sm:flex-row items-center justify-around w-full px-4 lg:px-0'>
+                    <div className='flex items-center gap-3 my-2'>
+                        <img src="https://jobhire-next.vercel.app/img/icons/user.svg" alt="Experience Icon" />
+                        <div className='text-center'>
+                            <span className='block'>Experience</span>
+                            <span className='font-semibold text-black'>{detail.Experience}</span>
                         </div>
-
                     </div>
-
-                    <div className='font-semibold text-xl'>
-                        {/* {detail} */}
-                        {detail.ExpectedSalary}
+                    <div className='flex items-center gap-3 my-2'>
+                        <img src="https://jobhire-next.vercel.app/img/icons/handshake.svg" alt="Job Type Icon" />
+                        <div className='text-center'>
+                            <span className='block'>Job Type</span>
+                            <span className='font-semibold text-black'>{detail.JobType}</span>
+                        </div>
                     </div>
-
-                </div>
-
-
-                {/* body */}
-                <div className='bg-white  lg:px-20'>
-                    <h2 className='text-2xl pt-8 px-3'>Overview</h2>
-                    <div className='flex flex-col items-center justify-center lg:text-left'>
-                        <p className='text-xl '>
-                            {detail.description ? parse(detail.description) : ''}
-                        </p>
-                    </div>
-                </div>
-
-
-                {/* Apply link */}
-                <div className='flex flex-col items-center justify-center pb-6 pt-6 bg-white w-full'>
-                    <div>
-
-                        <button
-                            onClick={handleApply}
-                            className="px-6 py-3 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mx-4"
-                        >
-                            Apply Now
-                        </button>
-                        <button
-                            onClick={handleShare}
-                            className="px-6 py-3 bg-gray-800 text-white rounded-md shadow-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-opacity-50 mx-4"
-                        >
-                            Share Now
-                        </button>
+                    <div className='flex items-center gap-3 my-2'>
+                        <img src="https://jobhire-next.vercel.app/img/icons/globe.svg" alt="Location Icon" />
+                        <div className='text-center'>
+                            <span className='block'>Location</span>
+                            <span className='font-semibold text-black'>Remote</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </>
-    )
+
+            <hr className='w-4/5 border-gray-300' />
+            {/* Body */}
+            <div className='bg-white w-full px-[4rem] py-8'>
+                <h2 className='text-2xl font-semibold mb-4'>Overview</h2>
+                <div className='text-lg lg:text-left'>
+                    {detail.description ? parse(detail.description) : ''}
+                </div>
+            </div>
+
+            {/* Apply and Share buttons */}
+            <div className='flex flex-col items-center justify-center pb-6 pt-6 bg-white w-full'>
+                <div className='flex flex-wrap justify-center gap-4'>
+                    <button
+                        onClick={handleApply}
+                        className="px-6 py-3 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                    >
+                        Apply Now
+                    </button>
+                    <button
+                        onClick={handleShare}
+                        className="px-6 py-3 bg-gray-800 text-white rounded-md shadow-md hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-opacity-50"
+                    >
+                        Share Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
 }
 
-export default JobDetail
+export default JobDetail;

@@ -1,8 +1,5 @@
-import React from 'react'
 import { CheckCircle } from 'lucide-react';
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
-import { ArrowRight } from 'lucide-react';
+
 
 export default function Price() {
  

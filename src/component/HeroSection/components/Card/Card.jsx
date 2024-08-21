@@ -10,7 +10,7 @@ function Card({img,header,position}) {
             </div>
             <div>
                 <h2 className='text-2xl'>{header}</h2>
-                <h4 className='text-md text-center font-semibold mt-2'>{position}</h4>
+                {/* <h4 className='text-md text-center font-semibold mt-2'>{position}</h4> */}
             </div>
         </div>
     </div>
