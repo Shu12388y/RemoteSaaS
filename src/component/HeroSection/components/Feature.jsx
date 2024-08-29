@@ -50,8 +50,10 @@ const Feature = () => {
     const currentJobs = cards.slice(indexOfFirstJob, indexOfLastJob);
 
     // Handle pagination
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
+    const paginate = (pageNumber) => {
+        window.scrollTo(0,1100)
+        setCurrentPage(pageNumber);
+    }
     return (
         <div className="flex flex-col items-center justify-center">
             {/* Search input */}
