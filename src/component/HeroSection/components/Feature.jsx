@@ -21,8 +21,11 @@ const Feature = () => {
         try {
             const response = await fetch('https://letsremote.letsresource.in/api/v1/getCompany');
             const data = await response.json();
+            setLoading(false)
             setCards(data.data);
+            
         } catch (error) {
+            setLoading(true)
             setCards([]);
             // console.error('Error fetching data', error);
         }
@@ -117,9 +120,11 @@ const Feature = () => {
 
             {/* Cards */}
             {loading ? (
-                <div>Loading...</div>
+                <span className="loading loading-spinner text-success"></span>
             ) : (
                 <div className='grid grid-cols-1 gap-6'>
+
+
                     {currentJobs.map((item, index) => (
                         <>
                         <JobCard company={item.CompanyName} position={item.Roles} apply={item._id} salary={item.ExpectedSalary} role={item.JobType} exp={item.Experience}/>

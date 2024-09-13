@@ -75,8 +75,8 @@ function JobDetail() {
     return (
         <div className='flex flex-col items-center justify-center overflow-x-hidden'>
             {/* Header part */}
-            <div className='flex flex-col lg:flex-row items-center justify-between p-4 bg-[#ecf9f8] w-full lg:gap-8'>
-                <div className='flex flex-col md:flex-row items-center gap-3'>
+            <div className='flex flex-col lg:flex-row items-center justify-between py-4 lg:px-32 px-1 bg-[#ecf9f8] w-full lg:gap-8'>
+                <div className='flex flex-col md:flex-row items-center gap-10'>
                     <img className='h-[90px] w-[90px]' src={randomImages[index]} alt="Company Logo" />
                     <div className='text-center md:text-left'>
                         <h1 className='text-4xl font-semibold'>{detail.Roles}</h1>
@@ -84,33 +84,34 @@ function JobDetail() {
                     </div>
                 </div>
 
-                <div className='mt-4 lg:mt-0 font-semibold text-lg'>
-                    <span className='mr-3'>Posted on</span>
+                <div className='mt-4 lg:mt-0 font-semibold text-lg flex flex-col  items-center gap-2'>
+                    <span className='mr-3'>Excepted Salary</span>
                     <span className='text-black'>
-                        {detail.createdAt?.slice(0, 10)}
+                        {detail.ExpectedSalary}
+                        {/* {detail.createdAt?.slice(0, 10)} */}
                     </span>
                 </div>
             </div>
 
             {/* More detail */}
             <div className='bg-white w-full flex flex-col items-center justify-center py-4'>
-                <div className='flex flex-col sm:flex-row items-center justify-around w-full px-4 lg:px-0'>
+                <div className='flex flex-col sm:flex-row flex-wrap items-center justify-around w-full px-4 lg:px-0'>
                     <div className='flex items-center gap-3 my-2'>
-                        <img src="https://jobhire-next.vercel.app/img/icons/user.svg" alt="Experience Icon" />
+                        <img  className='w-16 lg:w-10' src="https://jobhire-next.vercel.app/img/icons/user.svg" alt="Experience Icon" />
                         <div className='text-center'>
                             <span className='block'>Experience</span>
                             <span className='font-semibold text-black'>{detail.Experience}</span>
                         </div>
                     </div>
                     <div className='flex items-center gap-3 my-2'>
-                        <img src="https://jobhire-next.vercel.app/img/icons/handshake.svg" alt="Job Type Icon" />
+                        <img className='w-16 lg:w-10' src="https://jobhire-next.vercel.app/img/icons/handshake.svg" alt="Job Type Icon" />
                         <div className='text-center'>
                             <span className='block'>Job Type</span>
                             <span className='font-semibold text-black'>{detail.JobType}</span>
                         </div>
                     </div>
                     <div className='flex items-center gap-3 my-2'>
-                        <img src="https://jobhire-next.vercel.app/img/icons/globe.svg" alt="Location Icon" />
+                        <img className='w-16 lg:w-10' src="https://jobhire-next.vercel.app/img/icons/globe.svg" alt="Location Icon" />
                         <div className='text-center'>
                             <span className='block'>Location</span>
                             <span className='font-semibold text-black'>Remote</span>
@@ -121,9 +122,9 @@ function JobDetail() {
 
             <hr className='w-4/5 border-gray-300' />
             {/* Body */}
-            <div className='bg-white w-full px-[4rem] py-8'>
+            <div className='bg-white w-full px-5 lg:px-[8rem] py-8'>
                 <h2 className='text-2xl font-semibold mb-4'>Overview</h2>
-                <div className='text-lg lg:text-left'>
+                <div className=' text-sm lg:text-lg lg:text-left'>
                     {detail.description ? parse(detail.description) : ''}
                 </div>
             </div>
