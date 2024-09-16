@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <section className="relative pb-10 overflow-hidden py-10 bg-blue-950 text-white">
@@ -88,14 +90,12 @@ export default function Footer() {
               <h3 className="tracking-px mb-9 text-[20px] font-semibold uppercase text-white">Legals</h3>
               <ul>
                 <li className="mb-4">
-                  <a  href="/terms" className="text-base font-medium text-slate-300" href="#">Terms &amp; Conditions</a>
+                  <Link to="/terms" className="text-base font-medium text-slate-300" href="#">Terms &amp; Conditions</Link>
                 </li>
                 <li className="mb-4">
-                  <a href="/privacy" className="text-base font-medium text-slate-300" href="#">Privacy Policy</a>
+                  <Link to="/privacy" className="text-base font-medium text-slate-300" href="#">Privacy Policy</Link>
                 </li>
-                <li>
-                  <a className="text-base font-medium text-slate-300" href="#">Licensing</a>
-                </li>
+                
               </ul>
             </div>
           </div>

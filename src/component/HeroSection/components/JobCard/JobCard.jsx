@@ -14,7 +14,7 @@ const randomImages = [
   'https://cdn-icons-png.freepik.com/256/13492/13492919.png?uid=R155124616&ga=GA1.1.107076403.1719854617&semt=ais_hybrid'
 ];
 
-function JobCard({ company, position, apply,role,exp }) {
+function JobCard({ company, position, apply,role, category,exp, }) {
     const index = Math.floor(Math.random() * randomImages.length);
     const { isSignedIn } = useAuth();
     const navigator = useNavigate()
@@ -37,14 +37,17 @@ function JobCard({ company, position, apply,role,exp }) {
             <img className='h-[30px]' src={randomImages[index]} alt="img" />
             <div>
               <h1 className='lg:text-left font-semibold'>{position}</h1>
+              <h2 className='font-semibold'>{category}</h2>
               <h2 className='lg:text-left'>{company}</h2>
+              
             </div>
           </div>
           <div>
             <div className='flex flex-row items-center gap-10'>
               <h2>{role}</h2>
               <span className='flex flex-col item-center justify-center text-center'>
-              <h2 className='font-semibold'>Experenice</h2>
+              <h2 className='font-semibold'>Experience</h2>
+              
               <h2>{exp} years</h2>
               </span>
               {/* <span className='flex flex-1  gap-2'>

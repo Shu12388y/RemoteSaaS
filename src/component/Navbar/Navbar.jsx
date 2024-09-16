@@ -36,7 +36,7 @@ export function Navbar() {
         <div className="inline-flex items-center space-x-2">
           <span>
             <Link to={"/"}>
-              <h2 className="text-2xl font-bold text-green-500">Let's Remote</h2>
+              <h2 className="text-2xl font-bold text-black italic">Let's Remote</h2>
             </Link>
           </span>
         </div>

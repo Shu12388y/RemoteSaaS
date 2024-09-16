@@ -1,18 +1,12 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Card } from './Card';
-import Skeleton from 'react-loading-skeleton';
 import JobCard from './JobCard/JobCard';
 
 const Feature = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [cards, setCards] = useState([]);
+    const [filteredCards, setFilteredCards] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [filters, setFilters] = useState({
-        Experience: '',
-        category: '',
-        Role: '',
-        Company: '',
-    });
+    const [category, setCategory] = useState(''); // State to store selected category
     const [currentPage, setCurrentPage] = useState(1);
     const jobsPerPage = 10;
 
@@ -21,115 +15,88 @@ const Feature = () => {
         try {
             const response = await fetch('https://letsremote.letsresource.in/api/v1/getCompany');
             const data = await response.json();
-            setLoading(false)
+            setLoading(false);
             setCards(data.data);
-            
+            setFilteredCards(data.data); // Initially, set filteredCards to all jobs
         } catch (error) {
-            setLoading(true)
+            setLoading(false);
             setCards([]);
+            setFilteredCards([]);
             // console.error('Error fetching data', error);
         }
-        setLoading(false);
     }, []);
 
     useEffect(() => {
         fetchData();
     }, [fetchData]);
 
-    const handleSearchChange = (event) => {
-        setSearchTerm(event.target.value);
-    };
+    // Handle category change
+    const handleCategoryChange = (event) => {
+        const selectedCategory = event.target.value;
+        setCategory(selectedCategory);
 
-    const handleFilterChange = (event) => {
-        setFilters({
-            ...filters,
-            [event.target.name]: event.target.value,
-        });
+        // Filter jobs based on category
+        if (selectedCategory === '') {
+            setFilteredCards(cards); // Show all jobs if no category is selected
+        } else {
+            const filtered = cards.filter((job) => job.category.toLowerCase() === selectedCategory.toLowerCase());
+            setFilteredCards(filtered);
+        }
     };
 
     // Calculate the jobs to be displayed on the current page
     const indexOfLastJob = currentPage * jobsPerPage;
     const indexOfFirstJob = indexOfLastJob - jobsPerPage;
-    const currentJobs = cards.slice(indexOfFirstJob, indexOfLastJob);
+    const currentJobs = filteredCards.slice(indexOfFirstJob, indexOfLastJob);
 
     // Handle pagination
     const paginate = (pageNumber) => {
-        window.scrollTo(0,1100)
+        window.scrollTo(0, 1100);
         setCurrentPage(pageNumber);
-    }
+    };
+
     return (
         <div className="flex flex-col items-center justify-center bg-white text-black">
-            {/* Search input */}
-            {/* <div className="flex items-center justify-center mb-4">
-                <input
-                    type="text"
-                    placeholder="Search job"
-                    value={searchTerm}
-                    onChange={handleSearchChange}
-                    className="border border-gray-300 rounded-md px-3 py-2 w-full"
-                />
-            </div> */}
-
-            {/* Filters */}
-            {/* <div className="flex mb-4 space-x-4">
+            {/* Category Filter */}
+            <div className="mb-4">
+                <label htmlFor="category" className="text-lg font-semibold">Choose Job Category:</label>
                 <select
-                    name="Experience"
-                    value={filters.Experience}
-                    onChange={handleFilterChange}
-                    className="border border-gray-300 rounded-md px-3 py-2"
-                >
-                    <option value="">Select Experience</option>
-                    <option value="1 year">1 year</option>
-                    <option value="2 years">2 years</option>
-                    <option value="3 years">3 years</option>
-                </select>
-                <select
-                    name="Role"
-                    value={filters.Role}
-                    onChange={handleFilterChange}
-                    className="border border-gray-300 rounded-md px-3 py-2"
-                >
-                    <option value="">Select Role</option>
-                    <option value="Role 1">Role 1</option>
-                    <option value="Role 2">Role 2</option>
-                    <option value="Role 3">Role 3</option>
-                </select>
-                <select
-                    name="Company"
-                    value={filters.Company}
-                    onChange={handleFilterChange}
-                    className="border border-gray-300 rounded-md px-3 py-2"
-                >
-                    <option value="">Select Company</option>
-                    <option value="Company 1">Company 1</option>
-                    <option value="Company 2">Company 2</option>
-                    <option value="Company 3">Company 3</option>
-                </select>
-                <select
+                    id="category"
                     name="category"
-                    value={filters.category}
-                    onChange={handleFilterChange}
-                    className="border border-gray-300 rounded-md px-3 py-2"
+                    value={category}
+                    onChange={handleCategoryChange}
+                    className="ml-4 p-2 border border-gray-300 rounded-md"
                 >
-                    <option value="">Select Category</option>
-                    <option value="Category 1">Category 1</option>
-                    <option value="Category 2">Category 2</option>
-                    <option value="Category 3">Category 3</option>
+                    <option value="">All Categories</option>
+                    <option value="engineer">Engineer</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="human resource">Human Resource</option>
+                    <option value="project manager">Project Manager</option>
                 </select>
-            </div> */}
+            </div>
 
-            {/* Cards */}
+            {/* Job Cards */}
             {loading ? (
                 <span className="loading loading-spinner text-success"></span>
             ) : (
-                <div className='grid grid-cols-1 gap-6'>
-
-
-                    {currentJobs.map((item, index) => (
-                        <>
-                        <JobCard company={item.CompanyName} position={item.Roles} apply={item._id} salary={item.ExpectedSalary} role={item.JobType} exp={item.Experience}/>
-                        </> 
-                    ))}
+                <div className="grid grid-cols-1 gap-6">
+                    {currentJobs.length > 0 ? (
+                        currentJobs.map((item, index) => (
+                            <JobCard
+                                key={item._id}
+                                company={item.CompanyName}
+                                position={item.Roles}
+                                apply={item.ApplyLink}
+                              
+                                salary={item.ExpectedSalary}
+                                role={item.JobType}
+                                category={item.category}
+                                exp={item.Experience}
+                            />
+                        ))
+                    ) : (
+                        <p>No jobs available for the selected category.</p>
+                    )}
                 </div>
             )}
 
@@ -137,7 +104,7 @@ const Feature = () => {
             <div className="mt-4">
                 <nav>
                     <ul className="flex justify-center space-x-4">
-                        {Array.from({ length: Math.ceil(cards.length / jobsPerPage) }, (_, index) => (
+                        {Array.from({ length: Math.ceil(filteredCards.length / jobsPerPage) }, (_, index) => (
                             <li key={index} className="cursor-pointer">
                                 <button
                                     onClick={() => paginate(index + 1)}
