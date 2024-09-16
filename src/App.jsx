@@ -10,7 +10,8 @@ import Login from "./login/Login";
 import JobDetail from "./jobDetail/JobDetail";
 import "./App.css";
 import HeroSection from "./component/HeroSection/HeroSection";
-
+import PrivacyPolicy from "./PrivacyPolicy/Privacy";
+import Terms from "./Term/Terms";
 
 
 const images = ["img/carousel-1.jpg", "img/carousel-2.jpg"];
@@ -28,6 +29,8 @@ const App = () => {
           <Route path="/resource" element={<Resources />} />
           <Route path="/login" element={<Login />} />
           <Route path="/jobs/:id" element={<JobDetail/>} />
+          <Route path="/privacy"  element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<Terms />}/>
         </Routes>
         <Footer className="footer" />
       </div>
