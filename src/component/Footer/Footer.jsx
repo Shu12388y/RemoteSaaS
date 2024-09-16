@@ -88,10 +88,10 @@ export default function Footer() {
               <h3 className="tracking-px mb-9 text-[20px] font-semibold uppercase text-white">Legals</h3>
               <ul>
                 <li className="mb-4">
-                  <a className="text-base font-medium text-slate-300" href="#">Terms &amp; Conditions</a>
+                  <a  href="/terms" className="text-base font-medium text-slate-300" href="#">Terms &amp; Conditions</a>
                 </li>
                 <li className="mb-4">
-                  <a className="text-base font-medium text-slate-300" href="#">Privacy Policy</a>
+                  <a href="/privacy" className="text-base font-medium text-slate-300" href="#">Privacy Policy</a>
                 </li>
                 <li>
                   <a className="text-base font-medium text-slate-300" href="#">Licensing</a>
