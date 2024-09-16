@@ -56,7 +56,7 @@ const Feature = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center bg-white text-black">
+        <div className="flex flex-col items-center justify-center bg-white ">
             {/* Category Filter */}
             <div className="mb-4">
                 <label htmlFor="category" className="text-lg font-semibold">Choose Job Category:</label>
@@ -65,7 +65,7 @@ const Feature = () => {
                     name="category"
                     value={category}
                     onChange={handleCategoryChange}
-                    className="ml-4 p-2 border border-gray-300 rounded-md"
+                    className="ml-4 p-2 border  rounded-md"
                 >
                     <option value="">All Categories</option>
                     <option value="engineer">Engineer</option>
