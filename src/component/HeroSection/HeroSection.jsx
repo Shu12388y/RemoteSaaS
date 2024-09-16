@@ -36,15 +36,15 @@ const HeroSection = () => {
 
   return (
     <>
-    <div className="flex flex-col items-center justify-center overflow-x-hidden">
+    <div className="flex flex-col items-center justify-center overflow-x-hidden bg-white">
       <div className=" w-full">
         <HeroOne />
       </div>
       {/* Category section */}
-      <div className="container-xxl py-5">
+      <div className="container-xxl py-5 bg-white   text-black">
         <div className="container">
           <h1
-            className="text-center font-bold dark:text-white text-3xl text-black uppercase mb-5 animate__animated animate__fadeInUp"
+            className="text-center font-bold text-3xl text-black uppercase mb-5 animate__animated animate__fadeInUp"
             style={{ animationDelay: "0.1s" }}
           >
             Explore By Category
@@ -77,9 +77,9 @@ const HeroSection = () => {
 
       {/* Job Section */}
 
-      <div className="w-full px-4 sm:px-6  lg:px-8 pb-10 bg-white">
+      <div className="w-full px-4 sm:px-6  lg:px-8 pb-10 bg-white text-black">
         <div className="pt-10">
-          <h1 className="text-center dark:text-white font-bold text-3xl mb-3 uppercase   text-black">Recent Available Jobs</h1>
+          <h1 className="text-center font-bold text-3xl mb-3 uppercase   text-black">Recent Available Jobs</h1>
         </div>
         <Feature />
 
@@ -94,7 +94,7 @@ const HeroSection = () => {
 
       {/* price */}
       <div className="bg-white w-full">
-        <Price />
+        {/* <Price /> */}
 
       </div>
 

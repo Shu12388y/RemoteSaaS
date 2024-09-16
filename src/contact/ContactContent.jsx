@@ -8,7 +8,7 @@ const ContactContent = () => {
 }
   return (
     <>
-    <section className="bg-blue-50 dark:bg-slate-800" id="contact">
+    <section className="bg-blue-50 " id="contact">
     <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <div className="mb-4">
             <div className="mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12">
@@ -17,7 +17,7 @@ const ContactContent = () => {
                     className="font-heading mb-4 font-bold  mt-3 tracking-tight mt- text-black  text-3xl sm:text-5xl">
                     Get in Touch
                 </h2>
-                <p className="mx-auto mt-4 max-w-3xl text-xl  text-gray-600 dark:text-slate-400">Contact Us for any query
+                <p className="mx-auto mt-4 max-w-3xl text-xl  text-gray-600 ">Contact Us for any query
                 </p>
             </div>
         </div>
@@ -33,9 +33,9 @@ const ContactContent = () => {
                                 
                             </div>
                             <div className="ml-4 mb-4">
-                                <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">Our Address
+                                <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 ">Our Address
                                 </h3>
-                                <p className="text-gray-600 dark:text-slate-400">New Delhi,Delhi</p>
+                                <p className="text-gray-600 ">New Delhi,Delhi</p>
                                
                             </div>
                         </li>
@@ -44,10 +44,10 @@ const ContactContent = () => {
                               
                             </div>
                             <div className="ml-4 mb-4">
-                                <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 dark:text-white">Contact
+                                <h3 className="mb-2 text-lg font-medium leading-6 text-gray-900 ">Contact
                                 </h3>
-                                <p className="text-gray-600 dark:text-slate-400">Mobile: +91 9798316854</p>
-                                <p className="text-gray-600 dark:text-slate-400">Mail: letsremote@gmail.com</p>
+                                <p className="text-gray-600">Mobile: +91 9798316854</p>
+                                <p className="text-gray-600">Mail: letsremote@gmail.com</p>
                             </div>
                         </li>
                       
@@ -60,16 +60,16 @@ const ContactContent = () => {
                             <div className="mx-0 mb-1 sm:mb-4">
                                 <div className="mx-0 mb-1 sm:mb-4">
                                     <label  className="pb-1 text-xs uppercase tracking-wider"></label>
-                                    <input type="text" id="name" placeholder="Your name" className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0" name="name"/>
+                                    <input type="text" id="name" placeholder="Your name" className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md  sm:mb-0" name="name"/>
                                 </div>
                                 <div className="mx-0 mb-1 sm:mb-4">
                                     <label  className="pb-1 text-xs uppercase tracking-wider"></label>
-                                    <input type="email" id="email"  placeholder="Your email address" className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0" name="email"/>
+                                    <input type="email" id="email"  placeholder="Your email address" className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md sm:mb-0" name="email"/>
                                 </div>
                             </div>
                             <div className="mx-0 mb-1 sm:mb-4">
                                 <label  className="pb-1 text-xs uppercase tracking-wider"></label>
-                                <textarea id="textarea" name="textarea" cols="30" rows="5" placeholder="Write your message..." className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md dark:text-gray-300 sm:mb-0"/>
+                                <textarea id="textarea" name="textarea" cols="30" rows="5" placeholder="Write your message..." className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md  sm:mb-0"/>
                             </div>
                         </div>
                         <div className="text-center">

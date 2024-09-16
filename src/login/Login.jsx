@@ -5,7 +5,7 @@ function Login() {
     window.scrollTo(0, 0);
   }, [])
   return (
-    <div className='flex flex-col items-center justify-center p-10 h-full'><SignIn/></div>
+    <div className='flex flex-col items-center justify-center p-10 h-full bg-white'><SignIn/></div>
   )
 }
 

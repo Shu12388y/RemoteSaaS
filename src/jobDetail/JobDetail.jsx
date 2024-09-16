@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from 'react-router-dom';
 import parse from 'html-react-parser';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@clerk/clerk-react';
 
 // Random images
 const randomImages = [
@@ -22,8 +23,19 @@ function JobDetail() {
     const [detail, setDetail] = useState({});
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
+    const { isSignedIn } = useAuth();
+
+    const checkSignIn = () =>{
+        if (!isSignedIn){
+            navigate('/login')
+          }
+          else{
+            navigate(`/jobs/${id}`)
+          }
+    }
 
     useEffect(() => {
+        checkSignIn()
         window.scrollTo(0,0)
         async function fetchJobs() {
             try {
@@ -73,7 +85,7 @@ function JobDetail() {
     };
 
     return (
-        <div className='flex flex-col items-center justify-center overflow-x-hidden'>
+        <div className='flex flex-col items-center justify-center overflow-x-hidden bg-white text-black'>
             {/* Header part */}
             <div className='flex flex-col lg:flex-row items-center justify-between py-4 lg:px-32 px-1 bg-[#ecf9f8] w-full lg:gap-8'>
                 <div className='flex flex-col md:flex-row items-center gap-10'>
@@ -87,7 +99,7 @@ function JobDetail() {
                 <div className='mt-4 lg:mt-0 font-semibold text-lg flex flex-col  items-center gap-2'>
                     <span className='mr-3'>Excepted Salary</span>
                     <span className='text-black'>
-                        {detail.ExpectedSalary}
+                        {detail.ExpectedSalary} K
                         {/* {detail.createdAt?.slice(0, 10)} */}
                     </span>
                 </div>
