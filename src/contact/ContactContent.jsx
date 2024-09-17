@@ -24,7 +24,7 @@ const ContactContent = () => {
         <div className="flex items-stretch justify-center">
             <div className="grid md:grid-cols-2">
                 <div className="h-full pr-6">
-                    <p className="mt-3 mb-12 text-lg ">
+                    <p className="mt-3 mb-12 text-lg text-black">
                     Join us on our journey to redefine the future of work. Whether you are a freelancer, a small business owner, or part of a large enterprise, LetsRemote is here to support you every step of the way.
                     </p>
                     <ul className="mb-6 md:mb-0">
@@ -54,22 +54,22 @@ const ContactContent = () => {
                     </ul>
                 </div>
                 <div className="card h-fit max-w-6xl p-5 md:p-12" id="form">
-                    <h2 className="mb-4 text-2xl font-bold">Ready to Get Started?</h2>
+                    <h2 className="mb-4 text-2xl font-bold text-black">Ready to Get Started?</h2>
                     <form id="contactForm" onSubmit={handleSubmit}>
                         <div className="mb-6">
                             <div className="mx-0 mb-1 sm:mb-4">
                                 <div className="mx-0 mb-1 sm:mb-4">
                                     <label  className="pb-1 text-xs uppercase tracking-wider"></label>
-                                    <input type="text" id="name" placeholder="Your name" className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md  sm:mb-0" name="name"/>
+                                    <input type="text" id="name" placeholder="Your name" className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md  sm:mb-0 bg-white" name="name"/>
                                 </div>
                                 <div className="mx-0 mb-1 sm:mb-4">
                                     <label  className="pb-1 text-xs uppercase tracking-wider"></label>
-                                    <input type="email" id="email"  placeholder="Your email address" className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md sm:mb-0" name="email"/>
+                                    <input type="email" id="email"  placeholder="Your email address" className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md sm:mb-0 bg-white" name="email"/>
                                 </div>
                             </div>
                             <div className="mx-0 mb-1 sm:mb-4">
                                 <label  className="pb-1 text-xs uppercase tracking-wider"></label>
-                                <textarea id="textarea" name="textarea" cols="30" rows="5" placeholder="Write your message..." className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md  sm:mb-0"/>
+                                <textarea id="textarea" name="textarea" cols="30" rows="5" placeholder="Write your message..." className="mb-2 w-full rounded-md border border-gray-400 py-2 pl-2 pr-4 shadow-md  sm:mb-0 bg-white"/>
                             </div>
                         </div>
                         <div className="text-center">
