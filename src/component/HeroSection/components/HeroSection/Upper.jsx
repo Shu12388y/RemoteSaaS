@@ -5,8 +5,8 @@ export function HeroOne() {
   return (
     <div className="relative w-full bg-white pb-8">
       <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
-        <div className="flex flex-col justify-center px-4 py-12 md:py-16 lg:col-span-7 lg:gap-x-6 lg:px-6 lg:py-24 xl:col-span-6">
-          <div className="mt-8 flex max-w-max items-center space-x-2 rounded-full bg-gray-100 p-1">
+        <div className="flex flex-col justify-center px-4 py-12 md:py-16 lg:col-span-7 lg:gap-x-6 lg:px-6 lg:py-14 xl:col-span-6">
+          <div className="mt-4 flex max-w-max items-center space-x-2 rounded-full bg-gray-100 p-1">
             <div className="rounded-full bg-white p-1 px-2">
             </div>
           </div>
@@ -46,8 +46,8 @@ export function HeroOne() {
         </div>
         <div className="relative lg:col-span-5 lg:-mr-8 xl:col-span-6">
           <img
-            className="aspect-[3/2] bg-gray-50 object-cover lg:aspect-[2/3] lg:h-[500px] xl:aspect-[16/9]"
-            src="https://plus.unsplash.com/premium_photo-1679079456783-5d862f755557?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjQ3fHxtYW4lMjB3aXRoJTIwbGFwdG9wfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
+            className="aspect-[3/2] bg-gray-50 object-cover lg:aspect-[1/2] lg:h-[400px] xl:aspect-[16/9]"
+            src="https://images.unsplash.com/photo-1698891667843-f63ce45c696c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt=""
           />
         </div>
