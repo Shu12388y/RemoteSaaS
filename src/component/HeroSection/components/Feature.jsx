@@ -2,7 +2,6 @@ import { useEffect, useState, useCallback } from 'react';
 import JobCard from './JobCard/JobCard';
 
 const Feature = () => {
-    const [searchTerm, setSearchTerm] = useState('');
     const [cards, setCards] = useState([]);
     const [filteredCards, setFilteredCards] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -41,13 +40,14 @@ const Feature = () => {
         } else {
             const filtered = cards.filter((job) => job.category.toLowerCase() === selectedCategory.toLowerCase());
             setFilteredCards(filtered);
+            setCurrentPage(1)
         }
     };
 
     // Calculate the jobs to be displayed on the current page
     const indexOfLastJob = currentPage * jobsPerPage;
     const indexOfFirstJob = indexOfLastJob - jobsPerPage;
-    const currentJobs = filteredCards.slice(indexOfFirstJob, indexOfLastJob);
+    const  currentJobs = filteredCards.slice(indexOfFirstJob, indexOfLastJob);
 
     // Handle pagination
     const paginate = (pageNumber) => {
